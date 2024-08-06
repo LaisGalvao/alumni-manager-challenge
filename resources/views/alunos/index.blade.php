@@ -2,23 +2,38 @@
 
 @section('content')
 <div class="container">
-    <h1>Lista de Alunos</h1>
-
-    <!-- Componente de Busca -->
-    <aluno-search></aluno-search>
-
-    <!-- Componente de Formulário de Aluno -->
-    <aluno-form></aluno-form>
-
-    <!-- Listagem de Alunos -->
-    <ul>
-        @foreach ($alunos as $aluno)
-            <li>{{ $aluno->nome }} - {{ $aluno->data_nascimento }} - {{ $aluno->usuario }}</li>
-        @endforeach
-    </ul>
+    <aluno-form @aluno-saved="fetchAlunos"></aluno-form>
+    <aluno-table :alunos="alunos" @edit-aluno="editAluno" @aluno-deleted="fetchAlunos"></aluno-table>
 </div>
 @endsection
 
 @section('scripts')
+<script>
+export default {
+    data() {
+        return {
+            alunos: []
+        };
+    },
+    methods: {
+        fetchAlunos() {
+            axios.get('/alunos')
+                .then(response => {
+                    this.alunos = response.data;
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert('Ocorreu um erro ao buscar os alunos.');
+                });
+        },
+        editAluno(aluno) {
+            // Lógica para editar o aluno
+        }
+    },
+    created() {
+        this.fetchAlunos();
+    }
+};
+</script>
 <script src="{{ mix('js/app.js') }}"></script>
 @endsection

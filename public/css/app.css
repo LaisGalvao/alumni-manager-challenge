@@ -10931,3 +10931,203 @@ a.text-dark:focus {
   }
 }
 
+/* Definindo o tema escuro */
+
+* {
+  background-color: #202427;
+  color: #f5f5f5;
+  font-family: "Nunito", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #ed145b;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Navegação */
+
+.navbar {
+  background-color: #202427;
+  border-bottom: 1px solid #444;
+}
+
+.navbar-brand {
+  color: #ed145b;
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+  color: #f5f5f5;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ed145b;
+}
+
+/* Card */
+
+.card {
+  background-color: #2c2f31;
+  border: 1px solid #444;
+  color: #f5f5f5;
+}
+
+.card-header {
+  background-color: #2c2f31;
+  color: #ed145b;
+  border-bottom: 1px solid #444;
+}
+
+.card-body {
+  padding: 1.25rem;
+}
+
+/* Formulários */
+
+form {
+  background-color: #2c2f31;
+  padding: 1rem;
+  border-radius: 5px;
+  border: 1px solid #444;
+}
+
+label {
+  color: #f5f5f5;
+}
+
+input,
+select,
+textarea {
+  background-color: #444;
+  color: #f5f5f5;
+  border: 1px solid #444;
+  border-radius: 5px;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  color: #888;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #888;
+}
+
+button {
+  background-color: #ed145b;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #c11350;
+}
+
+/* Lista */
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: #2c2f31;
+  border: 1px solid #444;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+/* Tabela */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.75rem;
+  border: 1px solid #444;
+}
+
+th {
+  background-color: #2c2f31;
+  color: #ed145b;
+}
+
+td {
+  background-color: #444;
+}
+
+/* Menu lateral */
+
+.sidebar {
+  background-color: #202427;
+  color: #f5f5f5;
+  padding: 1rem;
+  border-right: 1px solid #444;
+}
+
+.sidebar a {
+  display: block;
+  color: #f5f5f5;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  margin: 0.25rem 0;
+}
+
+.sidebar a:hover {
+  background-color: #444;
+  color: #ed145b;
+}
+
+/* Conteúdo principal */
+
+.main-content {
+  padding: 1rem;
+}
+
+/* Inputs, selects e textareas com borda arredondada */
+
+input,
+select,
+textarea {
+  background-color: #444;
+  color: #f5f5f5;
+  border: 1px solid #444;
+  border-radius: 5px;
+  padding: 0.5rem;
+  width: 100%;
+  transition: border-color 0.3s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #ed145b;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(237, 20, 91, 0.3);
+  /* Cor do foco rosa claro */
+}
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+  color: #888;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #888;
+}
+

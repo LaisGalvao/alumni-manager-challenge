@@ -22,6 +22,7 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('aluno-search', require('./components/AlunoSearch.vue').default);
 Vue.component('aluno-form', require('./components/AlunoForm.vue').default);
+Vue.component('aluno-table', require('./components/AlunoList.vue').default);
 Vue.component('turma-form', require('./components/TurmaForm.vue').default);
 Vue.component('turma-list', require('./components/TurmaList.vue').default);
 Vue.component('matricula-form', require('./components/MatriculaForm.vue').default);

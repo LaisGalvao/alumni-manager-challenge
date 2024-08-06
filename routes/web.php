@@ -85,10 +85,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::delete('{turma}', [TurmaController::class, 'destroy'])->name('turmas.destroy');
     });
 
-   /*  Route::prefix('matriculas')->group(function () {
-        Route::get('/', [MatriculaController::class, 'index'])->name('matriculas.index');
-        Route::post('/new', [MatriculaController::class, 'store'])->name('matriculas.store');
-    }); */
 });
 
 Route::middleware(['auth'])->group(function () {

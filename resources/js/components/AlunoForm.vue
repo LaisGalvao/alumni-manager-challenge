@@ -1,20 +1,26 @@
 <template>
-    <form @submit.prevent="submitForm">
-        <div>
-            <label for="nome">Nome:</label>
-            <input v-model="aluno.nome" type="text" id="nome" required />
-        </div>
-        <div>
-            <label for="data_nascimento">Data de Nascimento:</label>
-            <input v-model="aluno.data_nascimento" type="date" id="data_nascimento" required />
-        </div>
-        <div>
-            <label for="usuario">Usuário:</label>
-            <input v-model="aluno.usuario" type="text" id="usuario" required />
-        </div>
-        <button class="btn-primary" type="submit">Salvar</button>
-    </form>
+    <div class="form-container">
+        <form @submit.prevent="submitForm">
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input v-model="aluno.nome" type="text" id="nome" class="form-control" required />
+                <span class="error-message" v-if="errors.nome">{{ errors.nome }}</span>
+            </div>
+            <div class="form-group">
+                <label for="data_nascimento">Data de Nascimento:</label>
+                <input v-model="aluno.data_nascimento" type="date" id="data_nascimento" class="form-control" required />
+                <span class="error-message" v-if="errors.data_nascimento">{{ errors.data_nascimento }}</span>
+            </div>
+            <div class="form-group">
+                <label for="usuario">Usuário:</label>
+                <input v-model="aluno.usuario" type="text" id="usuario" class="form-control" required />
+                <span class="error-message" v-if="errors.usuario">{{ errors.usuario }}</span>
+            </div>
+            <button class="btn-primary" type="submit">Salvar</button>
+        </form>
+    </div>
 </template>
+
 <script>
 export default {
     data() {
@@ -56,11 +62,11 @@ export default {
 <style scoped>
 /* Estilos para o formulário */
 .form-container {
-    background-color: #2c2f32; /* Fundo escuro para o formulário */
+    background-color: #2c2f32;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    color: #e0e0e0; /* Texto claro no formulário */
+    color: #e0e0e0;
 }
 
 .form-group {
@@ -70,32 +76,32 @@ export default {
 label {
     display: block;
     margin-bottom: 5px;
-    color: #ed145b; /* Cor dos rótulos */
+    color: #ed145b;
 }
 
 .form-control {
     width: 100%;
     padding: 10px;
-    border: 1px solid #333; /* Borda escura para campos de entrada */
+    border: 1px solid #333;
     border-radius: 4px;
-    background-color: #2c2f32; /* Fundo escuro para campos de entrada */
-    color: #e0e0e0; /* Texto claro nos campos de entrada */
+    background-color: #e0e0e0;
+    color: #2c2f32;
 }
 
 .form-control:focus {
-    border-color: #ed145b; /* Cor da borda ao focar */
-    box-shadow: 0 0 0 0.2rem rgba(237, 20, 91, 0.25); /* Sombra ao focar */
+    border-color: #ed145b;
+    box-shadow: 0 0 0 0.2rem rgba(237, 20, 91, 0.25);
 }
 
 .error-message {
-    color: #ff5b77; /* Cor das mensagens de erro */
+    color: #ff5b77;
     font-size: 0.875rem;
 }
 
 .btn-primary {
-    background-color: #ed145b; /* Cor de fundo do botão */
+    background-color: #ed145b;
     border: none;
-    color: #fff; /* Texto branco no botão */
+    color: #fff;
     padding: 10px 20px;
     font-size: 1rem;
     border-radius: 4px;
@@ -103,6 +109,6 @@ label {
 }
 
 .btn-primary:hover {
-    background-color: #d11a51; /* Cor de fundo ao passar o mouse */
+    background-color: #d11a51;
 }
 </style>
