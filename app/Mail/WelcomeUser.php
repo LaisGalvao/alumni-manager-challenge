@@ -30,6 +30,6 @@ class WelcomeUser extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.welcomeuser', ['info' => $this->info])->subject("Obrigado por se cadastrar no Vulpee!");
+        return $this->view('emails.welcomeuser', ['info' => $this->info])->subject("Obrigado por se cadastrar!");
     }
 }

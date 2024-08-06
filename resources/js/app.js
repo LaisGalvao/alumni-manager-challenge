@@ -20,6 +20,12 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('aluno-search', require('./components/AlunoSearch.vue').default);
+Vue.component('aluno-form', require('./components/AlunoForm.vue').default);
+Vue.component('turma-form', require('./components/TurmaForm.vue').default);
+Vue.component('turma-list', require('./components/TurmaList.vue').default);
+Vue.component('matricula-form', require('./components/MatriculaForm.vue').default);
+Vue.component('matricula-list', require('./components/MatriculaList.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
