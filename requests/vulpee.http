@@ -1,0 +1,358 @@
+// criar campo status movement
+
+### rota de pegar a distancia entre dois endereço
+GET https://maps.googleapis.com/maps/api/distancematrix/json?origins=Rua Lions Club, 239 A, São Carlos, SP&destinations=Av Trabalhador São Carlense, 400, Bloco B, São Calos, SP&mode=driving&language=pt-BR&sensor=false&key=AIzaSyB-7sWYxpN6JrNm36Ctyk1mPnmRqf_ta-Y HTTP/1.1
+content-type: application/json 
+
+### rota de cadastro de usuario
+POST https://api.gold.shinier.com.br/api/register HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjJhNGZiNC0yZjNhLTRiYjctOGIxMy0wZTVkY2VhZmI3ZTYiLCJqdGkiOiI2ODZhNjliOTcwOWUyMGVmYmRkYzQ1ZjI1NDczMGU1YmYxYjJmNTc4MWY1ODQwMDc1ZjE2MGY3OGEzYTVjNmIyNWY3Njk4Mzk3ZDliYmNiMCIsImlhdCI6MTY2NzUxMDkxNS43MzQ2MzYsIm5iZiI6MTY2NzUxMDkxNS43MzQ2NDIsImV4cCI6MTY5OTA0NjkxNS43MTgzMzUsInN1YiI6ImZjYzE4MDJlLTliNDQtNDNjNS1iNzM1LWY4MmE3YmRmYTE3NCIsInNjb3BlcyI6W119.cHGW3asCD0eteE5BnFPYRgmwtmTfRLOolIH7siRJYYpj9pSLLqri2On2PDz-_rCUnDa8k8nFf-v9p2n8KotYgotlZaWH6FgXlYJxebFb-DOqWv4ilA6_M1ttCY1fSVCjVFaDTIQ3ccCQ3DWS8CwVUj-swofv1PEBqYk3BzzQjhW7950mQHI2S8zKBXQ9dz9ZuMSuwxPm1nSrK6mdGZdemIJNm36E7gw8i1Ka7cnaJ3X7PZETsmEPILxR0DmRuefrsfnugXIQ-traCL9thq3MIeWfqqrNE90qrbA1STgl5HUl0vO_DNMM344VHZaj0Q52wAnm4hK9QzEJmQntS3aYPkbVWjp8_gbKwy4J6BtnJdHqWCHcCFZTXTtGuncIrV0oNa86Q7c8YHr6BYG4X9OF-776jdMoEc7YxdrAj6wIZuJeLAxFCV4tV6wczyCHmH0rqRfJ2lEv9futo9z0T_erAY3zBj4VimaExvdRKpHbDUZxyBHI5BdAxMVRxcVOUfPI2Q2LqfmZtMrikB33jjxiyQ5pkX5MmebvV7AMcezua6QhCMcwEQmJm3Cxg_vQwcrznFt7yfZOzpsVXPbxNG_wZ9ELNVyP-JSjiE8XyAf3kXdGh1a2IyPQb4Rm_5KCfahpY98n3odaYWEbfk1NQGfEE3xuOUU0ta7C_ZDNIdSCXYY
+
+{
+    "name": "Teste Sender - 1",
+    "email": "teste.sender1@gmail.com",
+    "password": "teste@1",
+    "password_confirmation" : "teste@1",
+    "telephone": "(16) 11111-1111",
+    "cpf": "00.000.000/0000-01",
+    "group_key": "Senders",
+    "vehicles": {
+        "surname": [0, "Meu Possante"],
+        "model": [0, "Civic"],
+        "year": [0, "2020/2021"],
+        "board": [0, "FFV-2022"],
+        "vehicle_document": [0, "www.example.com"]
+    },
+    "receive_pix": "true",
+    "pix_key": "phone",
+    "pix_key_value": "(16) 11111-1111",
+    "balance": "10.00"
+}
+
+### rota de editar meu usuario do tipo sender
+POST https://api.gold.shinier.com.br/api/auth/update/81794365-7aed-4dc5-bee3-95c2845be841 HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjJhNGZiNC0yZjNhLTRiYjctOGIxMy0wZTVkY2VhZmI3ZTYiLCJqdGkiOiI0MTY1MmM2OWU1N2Y1YWFiMzM1YTI4YmMzMzZlMTY1ZGQ5NjIyYTNmZTZhY2EyNmU4YTBhMDBkYmRkNTU1ZGQ4OWI2NDcyOWM1NmFiMGNmYiIsImlhdCI6MTY2Njk4NjkxNy4yMzE1NSwibmJmIjoxNjY2OTg2OTE3LjIzMTU1NSwiZXhwIjoxNjk4NTIyOTE3LjIyMTQwMiwic3ViIjoiODE3OTQzNjUtN2FlZC00ZGM1LWJlZTMtOTVjMjg0NWJlODQxIiwic2NvcGVzIjpbXX0.S92Iu7xPUtNVF2Wl5ZKMWVO2MIrC-gTCDF1DDX5LN5TJZvA6wkOE5fbH4BsRPRRZh3pv2LxLAgAG0PjEZOseqtfQH-_3kK-SjJuboHBpN_Z7fOg1L9ni0EuEk5uuyoXmJEt2O5Lf-4m0WZj0Jf28RteV_JfeZrdqGIp6KMSbDkIyScwvke3uHVHHMQv8DxJ5YW6yPvG1FEgpxxNKCm6XVeHi7uffbiUlh6Qvh8mFTnvluSR6_ETDYcSv_KRIqLw53I_R-lqXI7SNQESMZ8Qs8FGhqcBDHVO_n0chB6QRAsLauvZpgOt0O_cUAssQrrn73F0pAhqgs4zf94a0BxAIYlc6C_fwWIZrIMu1DVSeF_K_688WdwCLWBMgwwX6cKJCx5JCUTo-PJNPHo2SL8PNBDnKk-2iOvnWvSRkWqZ-ZttlV8j6Yfio4LzihH65JNk_anbWwNMPmqRzgIYUciXJbQ1B3HOvspJ53Ka0R-Dbro_5PLy7RvoFlggTiKCs9QZbXwhep-Z1Tz3Z6PRjgXEEJ1fKeQ1ThPDrkuFyOBcfZJqzXC8Pd1prtAKxCnjm3YJBY5xuiarK1wrUfzr_Fswo3_txl9V5dhhu8bBl-Q5htDJ23xbzswPUOmzKxp7Dvru7ZJgaAxIrb6PKud7nAfPDs8U4H9zg0VkOHlyTHwOQ6Jc
+
+{
+    "tax_deliver": {
+        "fixed": [0, "2,00"],
+        "2km": [0, "5,00"],
+        "6km": [0, "7,00"],
+        "10km": [0, "10,00"],
+        "add": [0, "1,00"],
+    }
+}
+
+### rota de editar meu usuario do tipo delivery
+POST https://api.gold.shinier.com.br/api/auth/update/81794365-7aed-4dc5-bee3-95c2845be841 HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjJhNGZiNC0yZjNhLTRiYjctOGIxMy0wZTVkY2VhZmI3ZTYiLCJqdGkiOiI0MTY1MmM2OWU1N2Y1YWFiMzM1YTI4YmMzMzZlMTY1ZGQ5NjIyYTNmZTZhY2EyNmU4YTBhMDBkYmRkNTU1ZGQ4OWI2NDcyOWM1NmFiMGNmYiIsImlhdCI6MTY2Njk4NjkxNy4yMzE1NSwibmJmIjoxNjY2OTg2OTE3LjIzMTU1NSwiZXhwIjoxNjk4NTIyOTE3LjIyMTQwMiwic3ViIjoiODE3OTQzNjUtN2FlZC00ZGM1LWJlZTMtOTVjMjg0NWJlODQxIiwic2NvcGVzIjpbXX0.S92Iu7xPUtNVF2Wl5ZKMWVO2MIrC-gTCDF1DDX5LN5TJZvA6wkOE5fbH4BsRPRRZh3pv2LxLAgAG0PjEZOseqtfQH-_3kK-SjJuboHBpN_Z7fOg1L9ni0EuEk5uuyoXmJEt2O5Lf-4m0WZj0Jf28RteV_JfeZrdqGIp6KMSbDkIyScwvke3uHVHHMQv8DxJ5YW6yPvG1FEgpxxNKCm6XVeHi7uffbiUlh6Qvh8mFTnvluSR6_ETDYcSv_KRIqLw53I_R-lqXI7SNQESMZ8Qs8FGhqcBDHVO_n0chB6QRAsLauvZpgOt0O_cUAssQrrn73F0pAhqgs4zf94a0BxAIYlc6C_fwWIZrIMu1DVSeF_K_688WdwCLWBMgwwX6cKJCx5JCUTo-PJNPHo2SL8PNBDnKk-2iOvnWvSRkWqZ-ZttlV8j6Yfio4LzihH65JNk_anbWwNMPmqRzgIYUciXJbQ1B3HOvspJ53Ka0R-Dbro_5PLy7RvoFlggTiKCs9QZbXwhep-Z1Tz3Z6PRjgXEEJ1fKeQ1ThPDrkuFyOBcfZJqzXC8Pd1prtAKxCnjm3YJBY5xuiarK1wrUfzr_Fswo3_txl9V5dhhu8bBl-Q5htDJ23xbzswPUOmzKxp7Dvru7ZJgaAxIrb6PKud7nAfPDs8U4H9zg0VkOHlyTHwOQ6Jc
+
+{
+    "vehicles": {
+        "type": [1, "frete"]
+    }
+}
+
+### rota de cadastro campo extra de um grupo
+POST https://api.gold.shinier.com.br/api/extra_field/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjJhNGZiNC0yZjNhLTRiYjctOGIxMy0wZTVkY2VhZmI3ZTYiLCJqdGkiOiI2ODZhNjliOTcwOWUyMGVmYmRkYzQ1ZjI1NDczMGU1YmYxYjJmNTc4MWY1ODQwMDc1ZjE2MGY3OGEzYTVjNmIyNWY3Njk4Mzk3ZDliYmNiMCIsImlhdCI6MTY2NzUxMDkxNS43MzQ2MzYsIm5iZiI6MTY2NzUxMDkxNS43MzQ2NDIsImV4cCI6MTY5OTA0NjkxNS43MTgzMzUsInN1YiI6ImZjYzE4MDJlLTliNDQtNDNjNS1iNzM1LWY4MmE3YmRmYTE3NCIsInNjb3BlcyI6W119.cHGW3asCD0eteE5BnFPYRgmwtmTfRLOolIH7siRJYYpj9pSLLqri2On2PDz-_rCUnDa8k8nFf-v9p2n8KotYgotlZaWH6FgXlYJxebFb-DOqWv4ilA6_M1ttCY1fSVCjVFaDTIQ3ccCQ3DWS8CwVUj-swofv1PEBqYk3BzzQjhW7950mQHI2S8zKBXQ9dz9ZuMSuwxPm1nSrK6mdGZdemIJNm36E7gw8i1Ka7cnaJ3X7PZETsmEPILxR0DmRuefrsfnugXIQ-traCL9thq3MIeWfqqrNE90qrbA1STgl5HUl0vO_DNMM344VHZaj0Q52wAnm4hK9QzEJmQntS3aYPkbVWjp8_gbKwy4J6BtnJdHqWCHcCFZTXTtGuncIrV0oNa86Q7c8YHr6BYG4X9OF-776jdMoEc7YxdrAj6wIZuJeLAxFCV4tV6wczyCHmH0rqRfJ2lEv9futo9z0T_erAY3zBj4VimaExvdRKpHbDUZxyBHI5BdAxMVRxcVOUfPI2Q2LqfmZtMrikB33jjxiyQ5pkX5MmebvV7AMcezua6QhCMcwEQmJm3Cxg_vQwcrznFt7yfZOzpsVXPbxNG_wZ9ELNVyP-JSjiE8XyAf3kXdGh1a2IyPQb4Rm_5KCfahpY98n3odaYWEbfk1NQGfEE3xuOUU0ta7C_ZDNIdSCXYY
+
+{
+    "description": "Card",
+    "key": "card",
+    "type_value": "master",
+    "type": "user",
+    "group_id": "fc0349f4-95c6-40e4-8d43-1a72d2a0ba49"
+}
+
+### rota de cadastro campo extra de um grupo
+POST https://api.gold.shinier.com.br/api/extra_field/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjJhNGZiNC0yZjNhLTRiYjctOGIxMy0wZTVkY2VhZmI3ZTYiLCJqdGkiOiJhMTFmZDBkOTY5YTg3N2JiZjMwYzdmZDM3ZDVhZjlmYTIxNzg0ODQxODZlZmY0ZWI4YmJjM2Y1M2RmOTIxN2UxMjE2ZDc4OGU5YTlkZTU0OSIsImlhdCI6MTY2NzUxNTg5My41NjM0MDcsIm5iZiI6MTY2NzUxNTg5My41NjM0MTEsImV4cCI6MTY5OTA1MTg5My41NTM2NjEsInN1YiI6ImZjYzE4MDJlLTliNDQtNDNjNS1iNzM1LWY4MmE3YmRmYTE3NCIsInNjb3BlcyI6W119.ZaERTvEgy3Ox5aiPLzV5XRAfkYd_3zwj-f1abIkA4ekrLglaXP0vD2GNx3iV6CCTJnVU_XBjJA3NLVd7AXFCKKjTjljiw7wGZ35qFYg91Y-GWGacwI5y34ohEOj0fwrVwp2eM1K3WEcEiiZF-3L-Em3qYjIGbSHuqfuq6XYKJSZdMbRsc-1trJ6g8m33PJL_92zCIaWMhGS02ti2Ba7qjXF5_N1Eta7u2SsHbT3DYdFrWww9ZO-iNOatEjpXLyOE5DhWzbs1gVPMpCoOks5532vmzhUyd7EgLk5KG6zwI75msCFaBVW8LX2Bo66VmsFoVtK6pMjUD2Vc6D4WkB7sSe-hx9q4Q0rdA-kqGtl5vZLSmjhzOxmoe-gUxbl6x54yM7T8uxHnubSxPdrDnFIsstVY-EYfuggNC6FnArafS1tJysgepjvfSU2iA2GHWm_rulbpIBtOuI4F4eHZq8gPR0MyVKNbwjQID0ylkw1KH474o2puw2iXqnaJpxtT9ROBTdJCuJj9yhFyHSADT0fz-6FVrHrWxSndG1UyTWdOxBSRxkTvHJm3shaBqa4OnqREofoq7ZyDZUEzA8itSvQHLWmBMQWM_WeuhgUz6fq0m3ryqbvb_gZSkTa_053GnKcIX3NFYh7Sq4ZRjCHz_T0hQAHt-wy_RWS5-r5STvxpmZM
+
+{
+    "description": "Number",
+    "key": "number",
+    "type_value": "string",
+    "type": "user",
+    "master_extra_field": "b1320c1f-c6d2-468b-93be-f9622b1dca19"
+}
+
+### rota de cadastro campo extra de um grupo
+POST https://api.gold.shinier.com.br/api/extra_field/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjJhNGZiNC0yZjNhLTRiYjctOGIxMy0wZTVkY2VhZmI3ZTYiLCJqdGkiOiI0MDEwNmEwZGQ3ZDgyNGY4ODg1YzUxZWJkMWNjYjJmMzgzMTU1NmUxNWRhMzcwZThhMjFiOThjMDZmYWMyYmY2Y2JiOTBkY2FkMTEwNjI2MCIsImlhdCI6MTY2Njg5NjAwMi4wMTAxMzUsIm5iZiI6MTY2Njg5NjAwMi4wMTAxMzksImV4cCI6MTY5ODQzMjAwMS45OTYyMzcsInN1YiI6ImZjYzE4MDJlLTliNDQtNDNjNS1iNzM1LWY4MmE3YmRmYTE3NCIsInNjb3BlcyI6W119.HKq9Qez3B-iM-IQGNKJ4S7E96KZdZs1_iiVIZlRx0aAVrYYpMXikLPb3s3v4-Yi8zJN0Gt8GE963DGkqxVHbjCwgVrRBqp-81P8klz5EHmr2ynwuL9MdpSD8bnQcU_WCpkLWURli8pUSNaekybvMrnOat-iSQGrzM-QSW2n9Pzuo0KW5rA8NzlH9-w2-oMjqw6PXZxUZVotbxy0r62QvlSHMF7OUKseeM8qc2Sa7IeaJA19KH5IpE9vzrhZWNHSIbvxAIGQjSGg25LpdclA_gXrsic0Hu994Or4niSsLZZfzVn1ZAUCs7ZJjjeXrogEwwDx7BlJrBabNxhI735AeC0TT66vb-6vG2s-hin1DvF5vRzR_DoQZtlBvQzBEyGhBT6dTwvJ_zJpf23-oIp8wb82y6nQXaiUnlSfdm4GHMdCmBK-JymSGOrynRcGQzmFmiN2z-Gb-3LLssYgwCnmqfPDrpH9lOMlcnl_nEUIKRCK4VBhBLwQEEP2wKcFuqgG4Y5ZvshJo64WbW-eeAsUuHr_pwLBjH9tH1zuKgtVjoby3ndAikIDKBzte66t4LZgdD7jSF5IVskqtsoPNa3-7R61fRQLIluHDIlZjS5dWzntAE3spfakGF5R_Mq7EKTZBPPUXwylFcTYbx38BRXhzf5H1yR_ncTAXO2Gl1I8b5Pg
+
+{
+    "description": "Model",
+    "key": "model",
+    "type_value": "string",
+    "type": "user",
+    "master_extra_field": "717b4651-7a2c-4137-94f2-2d2926c9d0a6"
+}
+
+### rota de cadastro campo extra de um grupo
+POST https://api.gold.shinier.com.br/api/extra_field/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjJhNGZiNC0yZjNhLTRiYjctOGIxMy0wZTVkY2VhZmI3ZTYiLCJqdGkiOiI0MDEwNmEwZGQ3ZDgyNGY4ODg1YzUxZWJkMWNjYjJmMzgzMTU1NmUxNWRhMzcwZThhMjFiOThjMDZmYWMyYmY2Y2JiOTBkY2FkMTEwNjI2MCIsImlhdCI6MTY2Njg5NjAwMi4wMTAxMzUsIm5iZiI6MTY2Njg5NjAwMi4wMTAxMzksImV4cCI6MTY5ODQzMjAwMS45OTYyMzcsInN1YiI6ImZjYzE4MDJlLTliNDQtNDNjNS1iNzM1LWY4MmE3YmRmYTE3NCIsInNjb3BlcyI6W119.HKq9Qez3B-iM-IQGNKJ4S7E96KZdZs1_iiVIZlRx0aAVrYYpMXikLPb3s3v4-Yi8zJN0Gt8GE963DGkqxVHbjCwgVrRBqp-81P8klz5EHmr2ynwuL9MdpSD8bnQcU_WCpkLWURli8pUSNaekybvMrnOat-iSQGrzM-QSW2n9Pzuo0KW5rA8NzlH9-w2-oMjqw6PXZxUZVotbxy0r62QvlSHMF7OUKseeM8qc2Sa7IeaJA19KH5IpE9vzrhZWNHSIbvxAIGQjSGg25LpdclA_gXrsic0Hu994Or4niSsLZZfzVn1ZAUCs7ZJjjeXrogEwwDx7BlJrBabNxhI735AeC0TT66vb-6vG2s-hin1DvF5vRzR_DoQZtlBvQzBEyGhBT6dTwvJ_zJpf23-oIp8wb82y6nQXaiUnlSfdm4GHMdCmBK-JymSGOrynRcGQzmFmiN2z-Gb-3LLssYgwCnmqfPDrpH9lOMlcnl_nEUIKRCK4VBhBLwQEEP2wKcFuqgG4Y5ZvshJo64WbW-eeAsUuHr_pwLBjH9tH1zuKgtVjoby3ndAikIDKBzte66t4LZgdD7jSF5IVskqtsoPNa3-7R61fRQLIluHDIlZjS5dWzntAE3spfakGF5R_Mq7EKTZBPPUXwylFcTYbx38BRXhzf5H1yR_ncTAXO2Gl1I8b5Pg
+
+{
+    "description": "Year",
+    "key": "year",
+    "type_value": "string",
+    "type": "user",
+    "master_extra_field": "717b4651-7a2c-4137-94f2-2d2926c9d0a6"
+}
+
+### rota de cadastro campo extra de um grupo
+POST https://api.gold.shinier.com.br/api/extra_field/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjJhNGZiNC0yZjNhLTRiYjctOGIxMy0wZTVkY2VhZmI3ZTYiLCJqdGkiOiI0MDEwNmEwZGQ3ZDgyNGY4ODg1YzUxZWJkMWNjYjJmMzgzMTU1NmUxNWRhMzcwZThhMjFiOThjMDZmYWMyYmY2Y2JiOTBkY2FkMTEwNjI2MCIsImlhdCI6MTY2Njg5NjAwMi4wMTAxMzUsIm5iZiI6MTY2Njg5NjAwMi4wMTAxMzksImV4cCI6MTY5ODQzMjAwMS45OTYyMzcsInN1YiI6ImZjYzE4MDJlLTliNDQtNDNjNS1iNzM1LWY4MmE3YmRmYTE3NCIsInNjb3BlcyI6W119.HKq9Qez3B-iM-IQGNKJ4S7E96KZdZs1_iiVIZlRx0aAVrYYpMXikLPb3s3v4-Yi8zJN0Gt8GE963DGkqxVHbjCwgVrRBqp-81P8klz5EHmr2ynwuL9MdpSD8bnQcU_WCpkLWURli8pUSNaekybvMrnOat-iSQGrzM-QSW2n9Pzuo0KW5rA8NzlH9-w2-oMjqw6PXZxUZVotbxy0r62QvlSHMF7OUKseeM8qc2Sa7IeaJA19KH5IpE9vzrhZWNHSIbvxAIGQjSGg25LpdclA_gXrsic0Hu994Or4niSsLZZfzVn1ZAUCs7ZJjjeXrogEwwDx7BlJrBabNxhI735AeC0TT66vb-6vG2s-hin1DvF5vRzR_DoQZtlBvQzBEyGhBT6dTwvJ_zJpf23-oIp8wb82y6nQXaiUnlSfdm4GHMdCmBK-JymSGOrynRcGQzmFmiN2z-Gb-3LLssYgwCnmqfPDrpH9lOMlcnl_nEUIKRCK4VBhBLwQEEP2wKcFuqgG4Y5ZvshJo64WbW-eeAsUuHr_pwLBjH9tH1zuKgtVjoby3ndAikIDKBzte66t4LZgdD7jSF5IVskqtsoPNa3-7R61fRQLIluHDIlZjS5dWzntAE3spfakGF5R_Mq7EKTZBPPUXwylFcTYbx38BRXhzf5H1yR_ncTAXO2Gl1I8b5Pg
+
+{
+    "description": "Board",
+    "key": "board",
+    "type_value": "string",
+    "type": "user",
+    "master_extra_field": "717b4651-7a2c-4137-94f2-2d2926c9d0a6"
+}
+
+### rota de cadastro campo extra de um grupo
+POST https://api.gold.shinier.com.br/api/extra_field/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjJhNGZiNC0yZjNhLTRiYjctOGIxMy0wZTVkY2VhZmI3ZTYiLCJqdGkiOiI0MDEwNmEwZGQ3ZDgyNGY4ODg1YzUxZWJkMWNjYjJmMzgzMTU1NmUxNWRhMzcwZThhMjFiOThjMDZmYWMyYmY2Y2JiOTBkY2FkMTEwNjI2MCIsImlhdCI6MTY2Njg5NjAwMi4wMTAxMzUsIm5iZiI6MTY2Njg5NjAwMi4wMTAxMzksImV4cCI6MTY5ODQzMjAwMS45OTYyMzcsInN1YiI6ImZjYzE4MDJlLTliNDQtNDNjNS1iNzM1LWY4MmE3YmRmYTE3NCIsInNjb3BlcyI6W119.HKq9Qez3B-iM-IQGNKJ4S7E96KZdZs1_iiVIZlRx0aAVrYYpMXikLPb3s3v4-Yi8zJN0Gt8GE963DGkqxVHbjCwgVrRBqp-81P8klz5EHmr2ynwuL9MdpSD8bnQcU_WCpkLWURli8pUSNaekybvMrnOat-iSQGrzM-QSW2n9Pzuo0KW5rA8NzlH9-w2-oMjqw6PXZxUZVotbxy0r62QvlSHMF7OUKseeM8qc2Sa7IeaJA19KH5IpE9vzrhZWNHSIbvxAIGQjSGg25LpdclA_gXrsic0Hu994Or4niSsLZZfzVn1ZAUCs7ZJjjeXrogEwwDx7BlJrBabNxhI735AeC0TT66vb-6vG2s-hin1DvF5vRzR_DoQZtlBvQzBEyGhBT6dTwvJ_zJpf23-oIp8wb82y6nQXaiUnlSfdm4GHMdCmBK-JymSGOrynRcGQzmFmiN2z-Gb-3LLssYgwCnmqfPDrpH9lOMlcnl_nEUIKRCK4VBhBLwQEEP2wKcFuqgG4Y5ZvshJo64WbW-eeAsUuHr_pwLBjH9tH1zuKgtVjoby3ndAikIDKBzte66t4LZgdD7jSF5IVskqtsoPNa3-7R61fRQLIluHDIlZjS5dWzntAE3spfakGF5R_Mq7EKTZBPPUXwylFcTYbx38BRXhzf5H1yR_ncTAXO2Gl1I8b5Pg
+
+{
+    "description": "Vehicle Document",
+    "key": "vehicle_document",
+    "type_value": "string",
+    "type": "user",
+    "master_extra_field": "717b4651-7a2c-4137-94f2-2d2926c9d0a6"
+}
+
+### rota de cadastro campo extra de um grupo
+POST https://api.gold.shinier.com.br/api/extra_field/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjJhNGZiNC0yZjNhLTRiYjctOGIxMy0wZTVkY2VhZmI3ZTYiLCJqdGkiOiI0MDEwNmEwZGQ3ZDgyNGY4ODg1YzUxZWJkMWNjYjJmMzgzMTU1NmUxNWRhMzcwZThhMjFiOThjMDZmYWMyYmY2Y2JiOTBkY2FkMTEwNjI2MCIsImlhdCI6MTY2Njg5NjAwMi4wMTAxMzUsIm5iZiI6MTY2Njg5NjAwMi4wMTAxMzksImV4cCI6MTY5ODQzMjAwMS45OTYyMzcsInN1YiI6ImZjYzE4MDJlLTliNDQtNDNjNS1iNzM1LWY4MmE3YmRmYTE3NCIsInNjb3BlcyI6W119.HKq9Qez3B-iM-IQGNKJ4S7E96KZdZs1_iiVIZlRx0aAVrYYpMXikLPb3s3v4-Yi8zJN0Gt8GE963DGkqxVHbjCwgVrRBqp-81P8klz5EHmr2ynwuL9MdpSD8bnQcU_WCpkLWURli8pUSNaekybvMrnOat-iSQGrzM-QSW2n9Pzuo0KW5rA8NzlH9-w2-oMjqw6PXZxUZVotbxy0r62QvlSHMF7OUKseeM8qc2Sa7IeaJA19KH5IpE9vzrhZWNHSIbvxAIGQjSGg25LpdclA_gXrsic0Hu994Or4niSsLZZfzVn1ZAUCs7ZJjjeXrogEwwDx7BlJrBabNxhI735AeC0TT66vb-6vG2s-hin1DvF5vRzR_DoQZtlBvQzBEyGhBT6dTwvJ_zJpf23-oIp8wb82y6nQXaiUnlSfdm4GHMdCmBK-JymSGOrynRcGQzmFmiN2z-Gb-3LLssYgwCnmqfPDrpH9lOMlcnl_nEUIKRCK4VBhBLwQEEP2wKcFuqgG4Y5ZvshJo64WbW-eeAsUuHr_pwLBjH9tH1zuKgtVjoby3ndAikIDKBzte66t4LZgdD7jSF5IVskqtsoPNa3-7R61fRQLIluHDIlZjS5dWzntAE3spfakGF5R_Mq7EKTZBPPUXwylFcTYbx38BRXhzf5H1yR_ncTAXO2Gl1I8b5Pg
+
+{
+    "description": "Receive Pix",
+    "key": "receive_pix",
+    "type_value": "bool",
+    "type": "user",
+    "group_id": "a333883c-76b8-4d8e-8049-63aa0dbafbff"
+}
+
+### rota de cadastro campo extra de um grupo
+POST https://api.gold.shinier.com.br/api/extra_field/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjJhNGZiNC0yZjNhLTRiYjctOGIxMy0wZTVkY2VhZmI3ZTYiLCJqdGkiOiI0MDEwNmEwZGQ3ZDgyNGY4ODg1YzUxZWJkMWNjYjJmMzgzMTU1NmUxNWRhMzcwZThhMjFiOThjMDZmYWMyYmY2Y2JiOTBkY2FkMTEwNjI2MCIsImlhdCI6MTY2Njg5NjAwMi4wMTAxMzUsIm5iZiI6MTY2Njg5NjAwMi4wMTAxMzksImV4cCI6MTY5ODQzMjAwMS45OTYyMzcsInN1YiI6ImZjYzE4MDJlLTliNDQtNDNjNS1iNzM1LWY4MmE3YmRmYTE3NCIsInNjb3BlcyI6W119.HKq9Qez3B-iM-IQGNKJ4S7E96KZdZs1_iiVIZlRx0aAVrYYpMXikLPb3s3v4-Yi8zJN0Gt8GE963DGkqxVHbjCwgVrRBqp-81P8klz5EHmr2ynwuL9MdpSD8bnQcU_WCpkLWURli8pUSNaekybvMrnOat-iSQGrzM-QSW2n9Pzuo0KW5rA8NzlH9-w2-oMjqw6PXZxUZVotbxy0r62QvlSHMF7OUKseeM8qc2Sa7IeaJA19KH5IpE9vzrhZWNHSIbvxAIGQjSGg25LpdclA_gXrsic0Hu994Or4niSsLZZfzVn1ZAUCs7ZJjjeXrogEwwDx7BlJrBabNxhI735AeC0TT66vb-6vG2s-hin1DvF5vRzR_DoQZtlBvQzBEyGhBT6dTwvJ_zJpf23-oIp8wb82y6nQXaiUnlSfdm4GHMdCmBK-JymSGOrynRcGQzmFmiN2z-Gb-3LLssYgwCnmqfPDrpH9lOMlcnl_nEUIKRCK4VBhBLwQEEP2wKcFuqgG4Y5ZvshJo64WbW-eeAsUuHr_pwLBjH9tH1zuKgtVjoby3ndAikIDKBzte66t4LZgdD7jSF5IVskqtsoPNa3-7R61fRQLIluHDIlZjS5dWzntAE3spfakGF5R_Mq7EKTZBPPUXwylFcTYbx38BRXhzf5H1yR_ncTAXO2Gl1I8b5Pg
+
+{
+    "description": "Pix Key",
+    "key": "pix_key",
+    "type_value": "string",
+    "type": "user",
+    "group_id": "a333883c-76b8-4d8e-8049-63aa0dbafbff"
+}
+
+### rota de cadastro campo extra de um grupo
+POST https://api.gold.shinier.com.br/api/extra_field/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjJhNGZiNC0yZjNhLTRiYjctOGIxMy0wZTVkY2VhZmI3ZTYiLCJqdGkiOiI0MDEwNmEwZGQ3ZDgyNGY4ODg1YzUxZWJkMWNjYjJmMzgzMTU1NmUxNWRhMzcwZThhMjFiOThjMDZmYWMyYmY2Y2JiOTBkY2FkMTEwNjI2MCIsImlhdCI6MTY2Njg5NjAwMi4wMTAxMzUsIm5iZiI6MTY2Njg5NjAwMi4wMTAxMzksImV4cCI6MTY5ODQzMjAwMS45OTYyMzcsInN1YiI6ImZjYzE4MDJlLTliNDQtNDNjNS1iNzM1LWY4MmE3YmRmYTE3NCIsInNjb3BlcyI6W119.HKq9Qez3B-iM-IQGNKJ4S7E96KZdZs1_iiVIZlRx0aAVrYYpMXikLPb3s3v4-Yi8zJN0Gt8GE963DGkqxVHbjCwgVrRBqp-81P8klz5EHmr2ynwuL9MdpSD8bnQcU_WCpkLWURli8pUSNaekybvMrnOat-iSQGrzM-QSW2n9Pzuo0KW5rA8NzlH9-w2-oMjqw6PXZxUZVotbxy0r62QvlSHMF7OUKseeM8qc2Sa7IeaJA19KH5IpE9vzrhZWNHSIbvxAIGQjSGg25LpdclA_gXrsic0Hu994Or4niSsLZZfzVn1ZAUCs7ZJjjeXrogEwwDx7BlJrBabNxhI735AeC0TT66vb-6vG2s-hin1DvF5vRzR_DoQZtlBvQzBEyGhBT6dTwvJ_zJpf23-oIp8wb82y6nQXaiUnlSfdm4GHMdCmBK-JymSGOrynRcGQzmFmiN2z-Gb-3LLssYgwCnmqfPDrpH9lOMlcnl_nEUIKRCK4VBhBLwQEEP2wKcFuqgG4Y5ZvshJo64WbW-eeAsUuHr_pwLBjH9tH1zuKgtVjoby3ndAikIDKBzte66t4LZgdD7jSF5IVskqtsoPNa3-7R61fRQLIluHDIlZjS5dWzntAE3spfakGF5R_Mq7EKTZBPPUXwylFcTYbx38BRXhzf5H1yR_ncTAXO2Gl1I8b5Pg
+
+{
+    "description": "Pix Key Value",
+    "key": "pix_key_value",
+    "type_value": "string",
+    "type": "user",
+    "group_id": "a333883c-76b8-4d8e-8049-63aa0dbafbff"
+}
+
+### rota de cadastro campo extra de um grupo
+POST https://api.gold.shinier.com.br/api/extra_field/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjJhNGZiNC0yZjNhLTRiYjctOGIxMy0wZTVkY2VhZmI3ZTYiLCJqdGkiOiI0MDEwNmEwZGQ3ZDgyNGY4ODg1YzUxZWJkMWNjYjJmMzgzMTU1NmUxNWRhMzcwZThhMjFiOThjMDZmYWMyYmY2Y2JiOTBkY2FkMTEwNjI2MCIsImlhdCI6MTY2Njg5NjAwMi4wMTAxMzUsIm5iZiI6MTY2Njg5NjAwMi4wMTAxMzksImV4cCI6MTY5ODQzMjAwMS45OTYyMzcsInN1YiI6ImZjYzE4MDJlLTliNDQtNDNjNS1iNzM1LWY4MmE3YmRmYTE3NCIsInNjb3BlcyI6W119.HKq9Qez3B-iM-IQGNKJ4S7E96KZdZs1_iiVIZlRx0aAVrYYpMXikLPb3s3v4-Yi8zJN0Gt8GE963DGkqxVHbjCwgVrRBqp-81P8klz5EHmr2ynwuL9MdpSD8bnQcU_WCpkLWURli8pUSNaekybvMrnOat-iSQGrzM-QSW2n9Pzuo0KW5rA8NzlH9-w2-oMjqw6PXZxUZVotbxy0r62QvlSHMF7OUKseeM8qc2Sa7IeaJA19KH5IpE9vzrhZWNHSIbvxAIGQjSGg25LpdclA_gXrsic0Hu994Or4niSsLZZfzVn1ZAUCs7ZJjjeXrogEwwDx7BlJrBabNxhI735AeC0TT66vb-6vG2s-hin1DvF5vRzR_DoQZtlBvQzBEyGhBT6dTwvJ_zJpf23-oIp8wb82y6nQXaiUnlSfdm4GHMdCmBK-JymSGOrynRcGQzmFmiN2z-Gb-3LLssYgwCnmqfPDrpH9lOMlcnl_nEUIKRCK4VBhBLwQEEP2wKcFuqgG4Y5ZvshJo64WbW-eeAsUuHr_pwLBjH9tH1zuKgtVjoby3ndAikIDKBzte66t4LZgdD7jSF5IVskqtsoPNa3-7R61fRQLIluHDIlZjS5dWzntAE3spfakGF5R_Mq7EKTZBPPUXwylFcTYbx38BRXhzf5H1yR_ncTAXO2Gl1I8b5Pg
+
+{
+    "description": "Balance",
+    "key": "balance",
+    "type_value": "float",
+    "type": "user",
+    "group_id": "a333883c-76b8-4d8e-8049-63aa0dbafbff"
+}
+
+### rota de cadastro campo extra de um grupo
+POST https://api.gold.shinier.com.br/api/extra_field/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjJhNGZiNC0yZjNhLTRiYjctOGIxMy0wZTVkY2VhZmI3ZTYiLCJqdGkiOiI0MDEwNmEwZGQ3ZDgyNGY4ODg1YzUxZWJkMWNjYjJmMzgzMTU1NmUxNWRhMzcwZThhMjFiOThjMDZmYWMyYmY2Y2JiOTBkY2FkMTEwNjI2MCIsImlhdCI6MTY2Njg5NjAwMi4wMTAxMzUsIm5iZiI6MTY2Njg5NjAwMi4wMTAxMzksImV4cCI6MTY5ODQzMjAwMS45OTYyMzcsInN1YiI6ImZjYzE4MDJlLTliNDQtNDNjNS1iNzM1LWY4MmE3YmRmYTE3NCIsInNjb3BlcyI6W119.HKq9Qez3B-iM-IQGNKJ4S7E96KZdZs1_iiVIZlRx0aAVrYYpMXikLPb3s3v4-Yi8zJN0Gt8GE963DGkqxVHbjCwgVrRBqp-81P8klz5EHmr2ynwuL9MdpSD8bnQcU_WCpkLWURli8pUSNaekybvMrnOat-iSQGrzM-QSW2n9Pzuo0KW5rA8NzlH9-w2-oMjqw6PXZxUZVotbxy0r62QvlSHMF7OUKseeM8qc2Sa7IeaJA19KH5IpE9vzrhZWNHSIbvxAIGQjSGg25LpdclA_gXrsic0Hu994Or4niSsLZZfzVn1ZAUCs7ZJjjeXrogEwwDx7BlJrBabNxhI735AeC0TT66vb-6vG2s-hin1DvF5vRzR_DoQZtlBvQzBEyGhBT6dTwvJ_zJpf23-oIp8wb82y6nQXaiUnlSfdm4GHMdCmBK-JymSGOrynRcGQzmFmiN2z-Gb-3LLssYgwCnmqfPDrpH9lOMlcnl_nEUIKRCK4VBhBLwQEEP2wKcFuqgG4Y5ZvshJo64WbW-eeAsUuHr_pwLBjH9tH1zuKgtVjoby3ndAikIDKBzte66t4LZgdD7jSF5IVskqtsoPNa3-7R61fRQLIluHDIlZjS5dWzntAE3spfakGF5R_Mq7EKTZBPPUXwylFcTYbx38BRXhzf5H1yR_ncTAXO2Gl1I8b5Pg
+
+{
+    "description": "Movimentacao",
+    "key": "movimentacao",
+    "type_value": "master",
+    "type": "user",
+    "group_id": "a333883c-76b8-4d8e-8049-63aa0dbafbff"
+}
+
+// TODO: CRIAR OS CAMPOS EXTRAS FILHOS DA MOVIMENTACAO,
+
+### rota de cadastro campo extra de um grupo
+POST https://api.gold.shinier.com.br/api/extra_field/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjJhNGZiNC0yZjNhLTRiYjctOGIxMy0wZTVkY2VhZmI3ZTYiLCJqdGkiOiI0MDEwNmEwZGQ3ZDgyNGY4ODg1YzUxZWJkMWNjYjJmMzgzMTU1NmUxNWRhMzcwZThhMjFiOThjMDZmYWMyYmY2Y2JiOTBkY2FkMTEwNjI2MCIsImlhdCI6MTY2Njg5NjAwMi4wMTAxMzUsIm5iZiI6MTY2Njg5NjAwMi4wMTAxMzksImV4cCI6MTY5ODQzMjAwMS45OTYyMzcsInN1YiI6ImZjYzE4MDJlLTliNDQtNDNjNS1iNzM1LWY4MmE3YmRmYTE3NCIsInNjb3BlcyI6W119.HKq9Qez3B-iM-IQGNKJ4S7E96KZdZs1_iiVIZlRx0aAVrYYpMXikLPb3s3v4-Yi8zJN0Gt8GE963DGkqxVHbjCwgVrRBqp-81P8klz5EHmr2ynwuL9MdpSD8bnQcU_WCpkLWURli8pUSNaekybvMrnOat-iSQGrzM-QSW2n9Pzuo0KW5rA8NzlH9-w2-oMjqw6PXZxUZVotbxy0r62QvlSHMF7OUKseeM8qc2Sa7IeaJA19KH5IpE9vzrhZWNHSIbvxAIGQjSGg25LpdclA_gXrsic0Hu994Or4niSsLZZfzVn1ZAUCs7ZJjjeXrogEwwDx7BlJrBabNxhI735AeC0TT66vb-6vG2s-hin1DvF5vRzR_DoQZtlBvQzBEyGhBT6dTwvJ_zJpf23-oIp8wb82y6nQXaiUnlSfdm4GHMdCmBK-JymSGOrynRcGQzmFmiN2z-Gb-3LLssYgwCnmqfPDrpH9lOMlcnl_nEUIKRCK4VBhBLwQEEP2wKcFuqgG4Y5ZvshJo64WbW-eeAsUuHr_pwLBjH9tH1zuKgtVjoby3ndAikIDKBzte66t4LZgdD7jSF5IVskqtsoPNa3-7R61fRQLIluHDIlZjS5dWzntAE3spfakGF5R_Mq7EKTZBPPUXwylFcTYbx38BRXhzf5H1yR_ncTAXO2Gl1I8b5Pg
+
+{
+    "description": "Type",
+    "key": "type",
+    "type_value": "string",
+    "type": "user",
+    "master_extra_field": "b07cb18c-b55a-49de-a86b-ea40514ddd6d"
+}
+
+### rota de cadastro campo extra de um grupo
+POST https://api.gold.shinier.com.br/api/extra_field/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjJhNGZiNC0yZjNhLTRiYjctOGIxMy0wZTVkY2VhZmI3ZTYiLCJqdGkiOiI0MDEwNmEwZGQ3ZDgyNGY4ODg1YzUxZWJkMWNjYjJmMzgzMTU1NmUxNWRhMzcwZThhMjFiOThjMDZmYWMyYmY2Y2JiOTBkY2FkMTEwNjI2MCIsImlhdCI6MTY2Njg5NjAwMi4wMTAxMzUsIm5iZiI6MTY2Njg5NjAwMi4wMTAxMzksImV4cCI6MTY5ODQzMjAwMS45OTYyMzcsInN1YiI6ImZjYzE4MDJlLTliNDQtNDNjNS1iNzM1LWY4MmE3YmRmYTE3NCIsInNjb3BlcyI6W119.HKq9Qez3B-iM-IQGNKJ4S7E96KZdZs1_iiVIZlRx0aAVrYYpMXikLPb3s3v4-Yi8zJN0Gt8GE963DGkqxVHbjCwgVrRBqp-81P8klz5EHmr2ynwuL9MdpSD8bnQcU_WCpkLWURli8pUSNaekybvMrnOat-iSQGrzM-QSW2n9Pzuo0KW5rA8NzlH9-w2-oMjqw6PXZxUZVotbxy0r62QvlSHMF7OUKseeM8qc2Sa7IeaJA19KH5IpE9vzrhZWNHSIbvxAIGQjSGg25LpdclA_gXrsic0Hu994Or4niSsLZZfzVn1ZAUCs7ZJjjeXrogEwwDx7BlJrBabNxhI735AeC0TT66vb-6vG2s-hin1DvF5vRzR_DoQZtlBvQzBEyGhBT6dTwvJ_zJpf23-oIp8wb82y6nQXaiUnlSfdm4GHMdCmBK-JymSGOrynRcGQzmFmiN2z-Gb-3LLssYgwCnmqfPDrpH9lOMlcnl_nEUIKRCK4VBhBLwQEEP2wKcFuqgG4Y5ZvshJo64WbW-eeAsUuHr_pwLBjH9tH1zuKgtVjoby3ndAikIDKBzte66t4LZgdD7jSF5IVskqtsoPNa3-7R61fRQLIluHDIlZjS5dWzntAE3spfakGF5R_Mq7EKTZBPPUXwylFcTYbx38BRXhzf5H1yR_ncTAXO2Gl1I8b5Pg
+
+{
+    "description": "Customer Name",
+    "key": "customer_name",
+    "type_value": "string",
+    "type": "user",
+    "master_extra_field": "b07cb18c-b55a-49de-a86b-ea40514ddd6d"
+}
+
+### rota de cadastro campo extra de um grupo
+POST https://api.gold.shinier.com.br/api/extra_field/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjJhNGZiNC0yZjNhLTRiYjctOGIxMy0wZTVkY2VhZmI3ZTYiLCJqdGkiOiI0MDEwNmEwZGQ3ZDgyNGY4ODg1YzUxZWJkMWNjYjJmMzgzMTU1NmUxNWRhMzcwZThhMjFiOThjMDZmYWMyYmY2Y2JiOTBkY2FkMTEwNjI2MCIsImlhdCI6MTY2Njg5NjAwMi4wMTAxMzUsIm5iZiI6MTY2Njg5NjAwMi4wMTAxMzksImV4cCI6MTY5ODQzMjAwMS45OTYyMzcsInN1YiI6ImZjYzE4MDJlLTliNDQtNDNjNS1iNzM1LWY4MmE3YmRmYTE3NCIsInNjb3BlcyI6W119.HKq9Qez3B-iM-IQGNKJ4S7E96KZdZs1_iiVIZlRx0aAVrYYpMXikLPb3s3v4-Yi8zJN0Gt8GE963DGkqxVHbjCwgVrRBqp-81P8klz5EHmr2ynwuL9MdpSD8bnQcU_WCpkLWURli8pUSNaekybvMrnOat-iSQGrzM-QSW2n9Pzuo0KW5rA8NzlH9-w2-oMjqw6PXZxUZVotbxy0r62QvlSHMF7OUKseeM8qc2Sa7IeaJA19KH5IpE9vzrhZWNHSIbvxAIGQjSGg25LpdclA_gXrsic0Hu994Or4niSsLZZfzVn1ZAUCs7ZJjjeXrogEwwDx7BlJrBabNxhI735AeC0TT66vb-6vG2s-hin1DvF5vRzR_DoQZtlBvQzBEyGhBT6dTwvJ_zJpf23-oIp8wb82y6nQXaiUnlSfdm4GHMdCmBK-JymSGOrynRcGQzmFmiN2z-Gb-3LLssYgwCnmqfPDrpH9lOMlcnl_nEUIKRCK4VBhBLwQEEP2wKcFuqgG4Y5ZvshJo64WbW-eeAsUuHr_pwLBjH9tH1zuKgtVjoby3ndAikIDKBzte66t4LZgdD7jSF5IVskqtsoPNa3-7R61fRQLIluHDIlZjS5dWzntAE3spfakGF5R_Mq7EKTZBPPUXwylFcTYbx38BRXhzf5H1yR_ncTAXO2Gl1I8b5Pg
+
+{
+    "description": "Delivery Type",
+    "key": "delivery_type",
+    "type_value": "string",
+    "type": "user",
+    "master_extra_field": "b07cb18c-b55a-49de-a86b-ea40514ddd6d"
+}
+
+### rota de cadastro campo extra de um grupo
+POST https://api.gold.shinier.com.br/api/extra_field/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjJhNGZiNC0yZjNhLTRiYjctOGIxMy0wZTVkY2VhZmI3ZTYiLCJqdGkiOiI0MDEwNmEwZGQ3ZDgyNGY4ODg1YzUxZWJkMWNjYjJmMzgzMTU1NmUxNWRhMzcwZThhMjFiOThjMDZmYWMyYmY2Y2JiOTBkY2FkMTEwNjI2MCIsImlhdCI6MTY2Njg5NjAwMi4wMTAxMzUsIm5iZiI6MTY2Njg5NjAwMi4wMTAxMzksImV4cCI6MTY5ODQzMjAwMS45OTYyMzcsInN1YiI6ImZjYzE4MDJlLTliNDQtNDNjNS1iNzM1LWY4MmE3YmRmYTE3NCIsInNjb3BlcyI6W119.HKq9Qez3B-iM-IQGNKJ4S7E96KZdZs1_iiVIZlRx0aAVrYYpMXikLPb3s3v4-Yi8zJN0Gt8GE963DGkqxVHbjCwgVrRBqp-81P8klz5EHmr2ynwuL9MdpSD8bnQcU_WCpkLWURli8pUSNaekybvMrnOat-iSQGrzM-QSW2n9Pzuo0KW5rA8NzlH9-w2-oMjqw6PXZxUZVotbxy0r62QvlSHMF7OUKseeM8qc2Sa7IeaJA19KH5IpE9vzrhZWNHSIbvxAIGQjSGg25LpdclA_gXrsic0Hu994Or4niSsLZZfzVn1ZAUCs7ZJjjeXrogEwwDx7BlJrBabNxhI735AeC0TT66vb-6vG2s-hin1DvF5vRzR_DoQZtlBvQzBEyGhBT6dTwvJ_zJpf23-oIp8wb82y6nQXaiUnlSfdm4GHMdCmBK-JymSGOrynRcGQzmFmiN2z-Gb-3LLssYgwCnmqfPDrpH9lOMlcnl_nEUIKRCK4VBhBLwQEEP2wKcFuqgG4Y5ZvshJo64WbW-eeAsUuHr_pwLBjH9tH1zuKgtVjoby3ndAikIDKBzte66t4LZgdD7jSF5IVskqtsoPNa3-7R61fRQLIluHDIlZjS5dWzntAE3spfakGF5R_Mq7EKTZBPPUXwylFcTYbx38BRXhzf5H1yR_ncTAXO2Gl1I8b5Pg
+
+{
+    "description": "Dimension",
+    "key": "dimension",
+    "type_value": "string",
+    "type": "user",
+    "master_extra_field": "b07cb18c-b55a-49de-a86b-ea40514ddd6d"
+}
+
+### rota de cadastro campo extra de um grupo
+POST https://api.gold.shinier.com.br/api/extra_field/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjJhNGZiNC0yZjNhLTRiYjctOGIxMy0wZTVkY2VhZmI3ZTYiLCJqdGkiOiI0MDEwNmEwZGQ3ZDgyNGY4ODg1YzUxZWJkMWNjYjJmMzgzMTU1NmUxNWRhMzcwZThhMjFiOThjMDZmYWMyYmY2Y2JiOTBkY2FkMTEwNjI2MCIsImlhdCI6MTY2Njg5NjAwMi4wMTAxMzUsIm5iZiI6MTY2Njg5NjAwMi4wMTAxMzksImV4cCI6MTY5ODQzMjAwMS45OTYyMzcsInN1YiI6ImZjYzE4MDJlLTliNDQtNDNjNS1iNzM1LWY4MmE3YmRmYTE3NCIsInNjb3BlcyI6W119.HKq9Qez3B-iM-IQGNKJ4S7E96KZdZs1_iiVIZlRx0aAVrYYpMXikLPb3s3v4-Yi8zJN0Gt8GE963DGkqxVHbjCwgVrRBqp-81P8klz5EHmr2ynwuL9MdpSD8bnQcU_WCpkLWURli8pUSNaekybvMrnOat-iSQGrzM-QSW2n9Pzuo0KW5rA8NzlH9-w2-oMjqw6PXZxUZVotbxy0r62QvlSHMF7OUKseeM8qc2Sa7IeaJA19KH5IpE9vzrhZWNHSIbvxAIGQjSGg25LpdclA_gXrsic0Hu994Or4niSsLZZfzVn1ZAUCs7ZJjjeXrogEwwDx7BlJrBabNxhI735AeC0TT66vb-6vG2s-hin1DvF5vRzR_DoQZtlBvQzBEyGhBT6dTwvJ_zJpf23-oIp8wb82y6nQXaiUnlSfdm4GHMdCmBK-JymSGOrynRcGQzmFmiN2z-Gb-3LLssYgwCnmqfPDrpH9lOMlcnl_nEUIKRCK4VBhBLwQEEP2wKcFuqgG4Y5ZvshJo64WbW-eeAsUuHr_pwLBjH9tH1zuKgtVjoby3ndAikIDKBzte66t4LZgdD7jSF5IVskqtsoPNa3-7R61fRQLIluHDIlZjS5dWzntAE3spfakGF5R_Mq7EKTZBPPUXwylFcTYbx38BRXhzf5H1yR_ncTAXO2Gl1I8b5Pg
+
+{
+    "description": "Origin",
+    "key": "origin",
+    "type_value": "string",
+    "type": "user",
+    "master_extra_field": "b07cb18c-b55a-49de-a86b-ea40514ddd6d"
+}
+
+### rota de cadastro campo extra de um grupo
+POST https://api.gold.shinier.com.br/api/extra_field/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjJhNGZiNC0yZjNhLTRiYjctOGIxMy0wZTVkY2VhZmI3ZTYiLCJqdGkiOiI0MDEwNmEwZGQ3ZDgyNGY4ODg1YzUxZWJkMWNjYjJmMzgzMTU1NmUxNWRhMzcwZThhMjFiOThjMDZmYWMyYmY2Y2JiOTBkY2FkMTEwNjI2MCIsImlhdCI6MTY2Njg5NjAwMi4wMTAxMzUsIm5iZiI6MTY2Njg5NjAwMi4wMTAxMzksImV4cCI6MTY5ODQzMjAwMS45OTYyMzcsInN1YiI6ImZjYzE4MDJlLTliNDQtNDNjNS1iNzM1LWY4MmE3YmRmYTE3NCIsInNjb3BlcyI6W119.HKq9Qez3B-iM-IQGNKJ4S7E96KZdZs1_iiVIZlRx0aAVrYYpMXikLPb3s3v4-Yi8zJN0Gt8GE963DGkqxVHbjCwgVrRBqp-81P8klz5EHmr2ynwuL9MdpSD8bnQcU_WCpkLWURli8pUSNaekybvMrnOat-iSQGrzM-QSW2n9Pzuo0KW5rA8NzlH9-w2-oMjqw6PXZxUZVotbxy0r62QvlSHMF7OUKseeM8qc2Sa7IeaJA19KH5IpE9vzrhZWNHSIbvxAIGQjSGg25LpdclA_gXrsic0Hu994Or4niSsLZZfzVn1ZAUCs7ZJjjeXrogEwwDx7BlJrBabNxhI735AeC0TT66vb-6vG2s-hin1DvF5vRzR_DoQZtlBvQzBEyGhBT6dTwvJ_zJpf23-oIp8wb82y6nQXaiUnlSfdm4GHMdCmBK-JymSGOrynRcGQzmFmiN2z-Gb-3LLssYgwCnmqfPDrpH9lOMlcnl_nEUIKRCK4VBhBLwQEEP2wKcFuqgG4Y5ZvshJo64WbW-eeAsUuHr_pwLBjH9tH1zuKgtVjoby3ndAikIDKBzte66t4LZgdD7jSF5IVskqtsoPNa3-7R61fRQLIluHDIlZjS5dWzntAE3spfakGF5R_Mq7EKTZBPPUXwylFcTYbx38BRXhzf5H1yR_ncTAXO2Gl1I8b5Pg
+
+{
+    "description": "Recipient",
+    "key": "recipient",
+    "type_value": "string",
+    "type": "user",
+    "master_extra_field": "b07cb18c-b55a-49de-a86b-ea40514ddd6d"
+}
+
+### rota de cadastro campo extra de um grupo
+POST https://api.gold.shinier.com.br/api/extra_field/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjJhNGZiNC0yZjNhLTRiYjctOGIxMy0wZTVkY2VhZmI3ZTYiLCJqdGkiOiI0MDEwNmEwZGQ3ZDgyNGY4ODg1YzUxZWJkMWNjYjJmMzgzMTU1NmUxNWRhMzcwZThhMjFiOThjMDZmYWMyYmY2Y2JiOTBkY2FkMTEwNjI2MCIsImlhdCI6MTY2Njg5NjAwMi4wMTAxMzUsIm5iZiI6MTY2Njg5NjAwMi4wMTAxMzksImV4cCI6MTY5ODQzMjAwMS45OTYyMzcsInN1YiI6ImZjYzE4MDJlLTliNDQtNDNjNS1iNzM1LWY4MmE3YmRmYTE3NCIsInNjb3BlcyI6W119.HKq9Qez3B-iM-IQGNKJ4S7E96KZdZs1_iiVIZlRx0aAVrYYpMXikLPb3s3v4-Yi8zJN0Gt8GE963DGkqxVHbjCwgVrRBqp-81P8klz5EHmr2ynwuL9MdpSD8bnQcU_WCpkLWURli8pUSNaekybvMrnOat-iSQGrzM-QSW2n9Pzuo0KW5rA8NzlH9-w2-oMjqw6PXZxUZVotbxy0r62QvlSHMF7OUKseeM8qc2Sa7IeaJA19KH5IpE9vzrhZWNHSIbvxAIGQjSGg25LpdclA_gXrsic0Hu994Or4niSsLZZfzVn1ZAUCs7ZJjjeXrogEwwDx7BlJrBabNxhI735AeC0TT66vb-6vG2s-hin1DvF5vRzR_DoQZtlBvQzBEyGhBT6dTwvJ_zJpf23-oIp8wb82y6nQXaiUnlSfdm4GHMdCmBK-JymSGOrynRcGQzmFmiN2z-Gb-3LLssYgwCnmqfPDrpH9lOMlcnl_nEUIKRCK4VBhBLwQEEP2wKcFuqgG4Y5ZvshJo64WbW-eeAsUuHr_pwLBjH9tH1zuKgtVjoby3ndAikIDKBzte66t4LZgdD7jSF5IVskqtsoPNa3-7R61fRQLIluHDIlZjS5dWzntAE3spfakGF5R_Mq7EKTZBPPUXwylFcTYbx38BRXhzf5H1yR_ncTAXO2Gl1I8b5Pg
+
+{
+    "description": "Date",
+    "key": "date",
+    "type_value": "string",
+    "type": "user",
+    "master_extra_field": "b07cb18c-b55a-49de-a86b-ea40514ddd6d"
+}
+
+### rota de cadastro campo extra de um grupo
+POST https://api.gold.shinier.com.br/api/extra_field/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjJhNGZiNC0yZjNhLTRiYjctOGIxMy0wZTVkY2VhZmI3ZTYiLCJqdGkiOiI0MDEwNmEwZGQ3ZDgyNGY4ODg1YzUxZWJkMWNjYjJmMzgzMTU1NmUxNWRhMzcwZThhMjFiOThjMDZmYWMyYmY2Y2JiOTBkY2FkMTEwNjI2MCIsImlhdCI6MTY2Njg5NjAwMi4wMTAxMzUsIm5iZiI6MTY2Njg5NjAwMi4wMTAxMzksImV4cCI6MTY5ODQzMjAwMS45OTYyMzcsInN1YiI6ImZjYzE4MDJlLTliNDQtNDNjNS1iNzM1LWY4MmE3YmRmYTE3NCIsInNjb3BlcyI6W119.HKq9Qez3B-iM-IQGNKJ4S7E96KZdZs1_iiVIZlRx0aAVrYYpMXikLPb3s3v4-Yi8zJN0Gt8GE963DGkqxVHbjCwgVrRBqp-81P8klz5EHmr2ynwuL9MdpSD8bnQcU_WCpkLWURli8pUSNaekybvMrnOat-iSQGrzM-QSW2n9Pzuo0KW5rA8NzlH9-w2-oMjqw6PXZxUZVotbxy0r62QvlSHMF7OUKseeM8qc2Sa7IeaJA19KH5IpE9vzrhZWNHSIbvxAIGQjSGg25LpdclA_gXrsic0Hu994Or4niSsLZZfzVn1ZAUCs7ZJjjeXrogEwwDx7BlJrBabNxhI735AeC0TT66vb-6vG2s-hin1DvF5vRzR_DoQZtlBvQzBEyGhBT6dTwvJ_zJpf23-oIp8wb82y6nQXaiUnlSfdm4GHMdCmBK-JymSGOrynRcGQzmFmiN2z-Gb-3LLssYgwCnmqfPDrpH9lOMlcnl_nEUIKRCK4VBhBLwQEEP2wKcFuqgG4Y5ZvshJo64WbW-eeAsUuHr_pwLBjH9tH1zuKgtVjoby3ndAikIDKBzte66t4LZgdD7jSF5IVskqtsoPNa3-7R61fRQLIluHDIlZjS5dWzntAE3spfakGF5R_Mq7EKTZBPPUXwylFcTYbx38BRXhzf5H1yR_ncTAXO2Gl1I8b5Pg
+
+{
+    "description": "KM",
+    "key": "km",
+    "type_value": "string",
+    "type": "user",
+    "master_extra_field": "b07cb18c-b55a-49de-a86b-ea40514ddd6d"
+}
+
+### rota de cadastro campo extra de um grupo
+POST https://api.gold.shinier.com.br/api/extra_field/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjJhNGZiNC0yZjNhLTRiYjctOGIxMy0wZTVkY2VhZmI3ZTYiLCJqdGkiOiI0MDEwNmEwZGQ3ZDgyNGY4ODg1YzUxZWJkMWNjYjJmMzgzMTU1NmUxNWRhMzcwZThhMjFiOThjMDZmYWMyYmY2Y2JiOTBkY2FkMTEwNjI2MCIsImlhdCI6MTY2Njg5NjAwMi4wMTAxMzUsIm5iZiI6MTY2Njg5NjAwMi4wMTAxMzksImV4cCI6MTY5ODQzMjAwMS45OTYyMzcsInN1YiI6ImZjYzE4MDJlLTliNDQtNDNjNS1iNzM1LWY4MmE3YmRmYTE3NCIsInNjb3BlcyI6W119.HKq9Qez3B-iM-IQGNKJ4S7E96KZdZs1_iiVIZlRx0aAVrYYpMXikLPb3s3v4-Yi8zJN0Gt8GE963DGkqxVHbjCwgVrRBqp-81P8klz5EHmr2ynwuL9MdpSD8bnQcU_WCpkLWURli8pUSNaekybvMrnOat-iSQGrzM-QSW2n9Pzuo0KW5rA8NzlH9-w2-oMjqw6PXZxUZVotbxy0r62QvlSHMF7OUKseeM8qc2Sa7IeaJA19KH5IpE9vzrhZWNHSIbvxAIGQjSGg25LpdclA_gXrsic0Hu994Or4niSsLZZfzVn1ZAUCs7ZJjjeXrogEwwDx7BlJrBabNxhI735AeC0TT66vb-6vG2s-hin1DvF5vRzR_DoQZtlBvQzBEyGhBT6dTwvJ_zJpf23-oIp8wb82y6nQXaiUnlSfdm4GHMdCmBK-JymSGOrynRcGQzmFmiN2z-Gb-3LLssYgwCnmqfPDrpH9lOMlcnl_nEUIKRCK4VBhBLwQEEP2wKcFuqgG4Y5ZvshJo64WbW-eeAsUuHr_pwLBjH9tH1zuKgtVjoby3ndAikIDKBzte66t4LZgdD7jSF5IVskqtsoPNa3-7R61fRQLIluHDIlZjS5dWzntAE3spfakGF5R_Mq7EKTZBPPUXwylFcTYbx38BRXhzf5H1yR_ncTAXO2Gl1I8b5Pg
+
+{
+    "description": "Value",
+    "key": "value",
+    "type_value": "string",
+    "type": "user",
+    "master_extra_field": "b07cb18c-b55a-49de-a86b-ea40514ddd6d"
+}
+
+### rota de cadastro campo extra de um grupo
+POST https://api.gold.shinier.com.br/api/extra_field/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjJhNGZiNC0yZjNhLTRiYjctOGIxMy0wZTVkY2VhZmI3ZTYiLCJqdGkiOiI0MDEwNmEwZGQ3ZDgyNGY4ODg1YzUxZWJkMWNjYjJmMzgzMTU1NmUxNWRhMzcwZThhMjFiOThjMDZmYWMyYmY2Y2JiOTBkY2FkMTEwNjI2MCIsImlhdCI6MTY2Njg5NjAwMi4wMTAxMzUsIm5iZiI6MTY2Njg5NjAwMi4wMTAxMzksImV4cCI6MTY5ODQzMjAwMS45OTYyMzcsInN1YiI6ImZjYzE4MDJlLTliNDQtNDNjNS1iNzM1LWY4MmE3YmRmYTE3NCIsInNjb3BlcyI6W119.HKq9Qez3B-iM-IQGNKJ4S7E96KZdZs1_iiVIZlRx0aAVrYYpMXikLPb3s3v4-Yi8zJN0Gt8GE963DGkqxVHbjCwgVrRBqp-81P8klz5EHmr2ynwuL9MdpSD8bnQcU_WCpkLWURli8pUSNaekybvMrnOat-iSQGrzM-QSW2n9Pzuo0KW5rA8NzlH9-w2-oMjqw6PXZxUZVotbxy0r62QvlSHMF7OUKseeM8qc2Sa7IeaJA19KH5IpE9vzrhZWNHSIbvxAIGQjSGg25LpdclA_gXrsic0Hu994Or4niSsLZZfzVn1ZAUCs7ZJjjeXrogEwwDx7BlJrBabNxhI735AeC0TT66vb-6vG2s-hin1DvF5vRzR_DoQZtlBvQzBEyGhBT6dTwvJ_zJpf23-oIp8wb82y6nQXaiUnlSfdm4GHMdCmBK-JymSGOrynRcGQzmFmiN2z-Gb-3LLssYgwCnmqfPDrpH9lOMlcnl_nEUIKRCK4VBhBLwQEEP2wKcFuqgG4Y5ZvshJo64WbW-eeAsUuHr_pwLBjH9tH1zuKgtVjoby3ndAikIDKBzte66t4LZgdD7jSF5IVskqtsoPNa3-7R61fRQLIluHDIlZjS5dWzntAE3spfakGF5R_Mq7EKTZBPPUXwylFcTYbx38BRXhzf5H1yR_ncTAXO2Gl1I8b5Pg
+
+{
+    "description": "Rate",
+    "key": "rate",
+    "type_value": "string",
+    "type": "user",
+    "master_extra_field": "b07cb18c-b55a-49de-a86b-ea40514ddd6d"
+}
+
+### rota de cadastro campo extra de um grupo
+POST https://api.gold.shinier.com.br/api/extra_field/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjJhNGZiNC0yZjNhLTRiYjctOGIxMy0wZTVkY2VhZmI3ZTYiLCJqdGkiOiI0MDEwNmEwZGQ3ZDgyNGY4ODg1YzUxZWJkMWNjYjJmMzgzMTU1NmUxNWRhMzcwZThhMjFiOThjMDZmYWMyYmY2Y2JiOTBkY2FkMTEwNjI2MCIsImlhdCI6MTY2Njg5NjAwMi4wMTAxMzUsIm5iZiI6MTY2Njg5NjAwMi4wMTAxMzksImV4cCI6MTY5ODQzMjAwMS45OTYyMzcsInN1YiI6ImZjYzE4MDJlLTliNDQtNDNjNS1iNzM1LWY4MmE3YmRmYTE3NCIsInNjb3BlcyI6W119.HKq9Qez3B-iM-IQGNKJ4S7E96KZdZs1_iiVIZlRx0aAVrYYpMXikLPb3s3v4-Yi8zJN0Gt8GE963DGkqxVHbjCwgVrRBqp-81P8klz5EHmr2ynwuL9MdpSD8bnQcU_WCpkLWURli8pUSNaekybvMrnOat-iSQGrzM-QSW2n9Pzuo0KW5rA8NzlH9-w2-oMjqw6PXZxUZVotbxy0r62QvlSHMF7OUKseeM8qc2Sa7IeaJA19KH5IpE9vzrhZWNHSIbvxAIGQjSGg25LpdclA_gXrsic0Hu994Or4niSsLZZfzVn1ZAUCs7ZJjjeXrogEwwDx7BlJrBabNxhI735AeC0TT66vb-6vG2s-hin1DvF5vRzR_DoQZtlBvQzBEyGhBT6dTwvJ_zJpf23-oIp8wb82y6nQXaiUnlSfdm4GHMdCmBK-JymSGOrynRcGQzmFmiN2z-Gb-3LLssYgwCnmqfPDrpH9lOMlcnl_nEUIKRCK4VBhBLwQEEP2wKcFuqgG4Y5ZvshJo64WbW-eeAsUuHr_pwLBjH9tH1zuKgtVjoby3ndAikIDKBzte66t4LZgdD7jSF5IVskqtsoPNa3-7R61fRQLIluHDIlZjS5dWzntAE3spfakGF5R_Mq7EKTZBPPUXwylFcTYbx38BRXhzf5H1yR_ncTAXO2Gl1I8b5Pg
+
+{
+    "description": "Category",
+    "key": "category",
+    "type_value": "string",
+    "type": "user",
+    "master_extra_field": "b07cb18c-b55a-49de-a86b-ea40514ddd6d"
+}
+
+### rota de cadastro campo extra de um grupo
+POST https://api.gold.shinier.com.br/api/extra_field/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5NjJhNGZiNC0yZjNhLTRiYjctOGIxMy0wZTVkY2VhZmI3ZTYiLCJqdGkiOiI0MDEwNmEwZGQ3ZDgyNGY4ODg1YzUxZWJkMWNjYjJmMzgzMTU1NmUxNWRhMzcwZThhMjFiOThjMDZmYWMyYmY2Y2JiOTBkY2FkMTEwNjI2MCIsImlhdCI6MTY2Njg5NjAwMi4wMTAxMzUsIm5iZiI6MTY2Njg5NjAwMi4wMTAxMzksImV4cCI6MTY5ODQzMjAwMS45OTYyMzcsInN1YiI6ImZjYzE4MDJlLTliNDQtNDNjNS1iNzM1LWY4MmE3YmRmYTE3NCIsInNjb3BlcyI6W119.HKq9Qez3B-iM-IQGNKJ4S7E96KZdZs1_iiVIZlRx0aAVrYYpMXikLPb3s3v4-Yi8zJN0Gt8GE963DGkqxVHbjCwgVrRBqp-81P8klz5EHmr2ynwuL9MdpSD8bnQcU_WCpkLWURli8pUSNaekybvMrnOat-iSQGrzM-QSW2n9Pzuo0KW5rA8NzlH9-w2-oMjqw6PXZxUZVotbxy0r62QvlSHMF7OUKseeM8qc2Sa7IeaJA19KH5IpE9vzrhZWNHSIbvxAIGQjSGg25LpdclA_gXrsic0Hu994Or4niSsLZZfzVn1ZAUCs7ZJjjeXrogEwwDx7BlJrBabNxhI735AeC0TT66vb-6vG2s-hin1DvF5vRzR_DoQZtlBvQzBEyGhBT6dTwvJ_zJpf23-oIp8wb82y6nQXaiUnlSfdm4GHMdCmBK-JymSGOrynRcGQzmFmiN2z-Gb-3LLssYgwCnmqfPDrpH9lOMlcnl_nEUIKRCK4VBhBLwQEEP2wKcFuqgG4Y5ZvshJo64WbW-eeAsUuHr_pwLBjH9tH1zuKgtVjoby3ndAikIDKBzte66t4LZgdD7jSF5IVskqtsoPNa3-7R61fRQLIluHDIlZjS5dWzntAE3spfakGF5R_Mq7EKTZBPPUXwylFcTYbx38BRXhzf5H1yR_ncTAXO2Gl1I8b5Pg
+
+{
+    "description": "Identification",
+    "key": "identification",
+    "type_value": "string",
+    "type": "user",
+    "master_extra_field": "b07cb18c-b55a-49de-a86b-ea40514ddd6d"
+}
