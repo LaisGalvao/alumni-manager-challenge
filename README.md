@@ -1,92 +1,147 @@
-# comando mais usados:
+# Alumni Manager Challenge
 
-php artisan make:migration create_users_table --create=users
-php artisan make:migration add_votes_to_users_table --table=users
-php artisan migrate:reset
-php artisan migrate:refresh
-php artisan db:seed --class=UserTableSeeder
-php artisan migrate:refresh --seed
-php artisan db:seed
+## Descrição
 
-php artisan tinker
-use App\Condinvest\PropLoca as p;
+Este projeto é uma aplicação web desenvolvida com Laravel (PHP 7.4) e Vue.js. O sistema permite o gerenciamento de alunos, turmas e matrículas com funcionalidades administrativas e uma interface de usuário interativa.
 
-sudo git fetch --all
-sudo git reset --hard origin/master
+## Pré-requisitos
 
-php artisan make:controller PhotoController --api
+Antes de começar, certifique-se de ter os seguintes softwares instalados:
 
-php -m | grep intl
-sudo apt install php7.4-intl
-sudo su
-service apache2 restart
-#You just need to enable this extension in php.ini by uncommenting this line:
-cd /etc/php/7.4/cli/
-sudo vim php.ini
-extension=ext/php_intl.dll
+- PHP 7.4 ou superior
+- Composer
+- Node.js e npm
+- MySQL ou outro banco de dados compatível
 
-#por conta do erro FPDF Error “Some data has already been output” tem que remover os echos na classe do fpdf:
- cd vendor/setasign/fpdf/
-sudo vim fpdf.php
-#mudar nas linhas na linas 1008 e 1017
-echo $this->buffer;
-to 
-return $this->buffer;
+## Configuração do Projeto
 
-# Comandos basicos
+### 1. Clone o Repositório
 
-sudo apt-get install php7.4-mysql
+Clone o repositório para sua máquina local:
 
-apt-get install apache2 php7.4 libapache2-mod-php7.4 php7.4-curl php-pear php7.4-gd php7.4-dev php7.4-zip php7.4-mbstring php7.4-mysql php7.4-xml curl -y
+```bash
+git clone https://github.com/usuario/alumni-manager-challenge.git
+cd alumni-manager-challenge
+```
 
-# mysql necessário
+### 2. Configuração do Ambiente
 
-mysql -u root -p
-CREATE DATABASE "database name";
-CREATE USER 'newuser'@'localhost' IDENTIFIED WITH mysql*native_password BY 'password';
-GRANT ALL PRIVILEGES ON * . \_ TO 'newuser'@'localhost';
-FLUSH PRIVILEGES;
+Copie o arquivo `.env.example` para um novo arquivo chamado `.env`:
 
-systemctl start apache2
-systemctl enable apache2
+```bash
+cp .env.example .env
+```
 
+### 3. Instale as Dependências do Backend
+
+Instale as dependências PHP usando o Composer:
+
+```bash
 composer install
-composer dump-autoload
+```
 
+### 4. Gere a Chave da Aplicação
+
+Gere a chave da aplicação Laravel:
+
+```bash
 php artisan key:generate
-php artisan migrate --seed
-php artisan passport:install
+```
 
-php artisan serve
-php artisan make:migration create_users_table --create=users
-php artisan make:migration add_votes_to_users_table --table=users
-php artisan migrate:reset
-php artisan migrate:refresh
-php artisan db:seed --class=UserTableSeeder
-php artisan migrate:refresh --seed
+### 5. Configure o Banco de Dados
+
+Edite o arquivo `.env` e configure as variáveis de ambiente para o seu banco de dados:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nome_do_banco
+DB_USERNAME=usuario
+DB_PASSWORD=senha
+```
+
+### 6. Execute as Migrations
+
+Execute as migrations para criar as tabelas no banco de dados:
+
+```bash
+php artisan migrate
+```
+
+### 7. Instale as Dependências do Frontend
+
+Instale as dependências do Node.js usando o npm:
+
+```bash
+npm install
+```
+
+### 8. Compile os Assets
+
+Compile os assets para o frontend:
+
+```bash
+npm run dev
+```
+
+### 9. Popule o Banco de Dados com Dados de Teste
+
+Se desejar, você pode popular o banco de dados com dados de teste:
+
+```bash
 php artisan db:seed
-php artisan make:controller PhotoController --api
+```
 
-php artisan tinker
+### 10. Inicie o Servidor
 
-# comandos em etc/apache2/sites-avaliable
+Inicie o servidor de desenvolvimento Laravel:
 
-sudo a2enmod rewrite
+```bash
+php artisan serve
+```
 
-sudo a2ensite meuarquivo.conf
-sudo a2dissite 000-default.conf
+O servidor estará disponível em `http://localhost:8000`.
 
-sudo a2enmod rewrite
+## Uso
 
-sudo systemctl restart apache2
-sudo service apache2 restart
+- **Administração de Alunos**: Acesse `http://localhost:8000/alunos` para gerenciar alunos.
+- **Administração de Turmas**: Acesse `http://localhost:8000/turmas` para gerenciar turmas.
+- **Matrículas**: Acesse `http://localhost:8000/matriculas` para gerenciar matrículas.
 
-sudo a2dissite 000-default.conf
+## Autenticação
 
-# configurar https
+Somente usuários administradores têm acesso às funcionalidades de administração. Você pode criar um usuário administrador através do seeder ou diretamente no banco de dados e fazer login com essas credenciais para acessar as áreas administrativas.
 
-sudo snap install core
-sudo snap refresh core
-sudo snap install --classic certbot
-sudo ln -s /snap/bin/certbot /usr/bin/certbot
-sudo certbot --apache
+## Contribuição
+
+Se você deseja contribuir para o projeto, por favor siga estas etapas:
+
+1. Faça um fork do repositório.
+2. Crie uma branch para sua feature ou correção (`git checkout -b feature/nome-da-feature`).
+3. Commit suas alterações (`git commit -am 'Adiciona nova feature'`).
+4. Faça um push para a branch (`git push origin feature/nome-da-feature`).
+5. Abra um pull request.
+
+## Licença
+
+Este projeto está licenciado sob a [MIT License](LICENSE).
+
+## Contato
+
+Se você tiver alguma dúvida ou sugestão, entre em contato:
+
+- **E-mail:** seuemail@example.com
+- **GitHub:** [github.com/usuario](https://github.com/usuario)
+```
+
+### Explicações Adicionais
+
+- **Pré-requisitos**: Lista os softwares necessários para rodar o projeto.
+- **Configuração do Ambiente**: Passos para configurar o ambiente do projeto.
+- **Instalação de Dependências**: Passos para instalar dependências PHP e Node.js.
+- **Configuração do Banco de Dados**: Configuração do banco de dados e execução das migrations.
+- **População de Dados**: Opcionalmente popula o banco de dados com dados iniciais.
+- **Início do Servidor**: Passo para iniciar o servidor Laravel e acessar a aplicação.
+
+Ajuste o conteúdo do `README.md` conforme necessário para se adequar ao seu projeto e ao seu fluxo de trabalho.
