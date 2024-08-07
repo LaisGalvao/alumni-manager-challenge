@@ -14,6 +14,9 @@ class TurmaController extends Controller
     {
         // Paginação de 5 itens por página
         $turmas = Turma::orderBy('nome')->paginate(5);
+        if (request()->ajax()) {
+                return response()->json($turmas);
+        }
         return view('turmas.index', compact('turmas'));
     }
 
@@ -52,34 +55,17 @@ class TurmaController extends Controller
         return view('turmas.edit', compact('turma'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Turma $turma)
-    {
-        // Validação dos dados recebidos
-        $request->validate([
-            'nome' => 'required|string|max:255',
-            'descricao' => 'nullable|string|max:1000',
-            'tipo' => 'required|string|max:255',
-        ]);
+    public function update(Request $request, $id)
+       {
+            $turma = Turma::findOrFail($id);
+            $turma->update($request->all());
+            return response()->json(['message' => 'Turma atualizada com sucesso!', 'turma' => $turma]);
+       }
 
-        // Atualização da Turma
-        $turma->update($request->all());
-
-        return redirect()->route('turmas.index')
-                         ->with('success', 'Turma atualizada com sucesso.');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Turma $turma)
-    {
-        // Exclusão da Turma
-        $turma->delete();
-
-        return redirect()->route('turmas.index')
-                         ->with('success', 'Turma excluída com sucesso.');
-    }
+        public function destroy($id)
+        {
+            $turma = Turma::findOrFail($id);
+            $turma->delete();
+            return response()->json(['message' => 'Turma excluída com sucesso!']);
+        }
 }
