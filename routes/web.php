@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\TurmaController;
 use App\Http\Controllers\MatriculaController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,29 +22,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// rota de teste do email para o cliente novo confirmando o registro
-/* Route::get('welcome', function () {
-    return new App\Mail\WelcomeUser('test');
-});
- */
-// rota de teste do email para notificar um novo cliente do pré cadastro
-//utilizando o super admin para puxar as infos de teste mesmo
-//Route::get('newuser', function () {
-    /*$test = ['name'=> 'Super Admin 2',
-
-   'document'=>' 00.000.000/0000-00',
-
-    'email'=>'email@email.com.br',
-
-   'telephone' =>'(99)99999-9999']; */
-    //App\Models\User::find('f16ebafc-2c77-4c75-8a42-bf558035391f');
-    //return new App\Mail\SendNewUser($test);
-//});
-
 Auth::routes();
-
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Auth\LoginController;
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
@@ -51,10 +31,9 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::middleware('auth')->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-    // Rotas protegidas adicionais
+    // Rotas com regra de admin
     Route::middleware('role:admin')->group(function () {
         Route::get('/admin', [AdminController::class, 'index']);
-        // Outras rotas para administradores
     });
 });
 
@@ -89,6 +68,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/matriculas', [MatriculaController::class, 'index'])->name('matriculas.index');
+    Route::get('/matriculas/check', 'MatriculaController@check');
+    Route::delete('/matriculas/{id}', 'MatriculaController@destroy');
     Route::get('/matriculas/{turma_id}', [MatriculaController::class, 'show'])->name('matriculas.show');
     Route::post('/matriculas', [MatriculaController::class, 'store'])->name('matriculas.store');
 });
