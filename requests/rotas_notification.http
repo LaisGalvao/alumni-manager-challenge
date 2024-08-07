@@ -1,8 +1,0 @@
-### rota de cadastro de mensagem para um ou mais grupo
-POST http://127.0.0.1:8000/api/notification/create HTTP/1.1
-content-type: application/json
-
-{
-    "token": "fgdfgdffsdhjagfdgdf",
-    "telephone":"(16)98135-4817"
-}
