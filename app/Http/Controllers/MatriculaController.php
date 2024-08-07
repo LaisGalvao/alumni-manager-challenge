@@ -18,9 +18,12 @@ class MatriculaController extends Controller
     public function index()
     {
         // Busca todas as turmas
-        $turmas = Turma::all();
+        $turmas = Matricula::all();
 
         // Retorna a view com os dados das turmas
+        if (request()->ajax()) {
+                return response()->json($turmas);
+        }
         return view('matriculas.index', compact('turmas'));
     }
 
@@ -73,4 +76,25 @@ class MatriculaController extends Controller
         // Redireciona com mensagem de sucesso
         return redirect()->route('matriculas.index')->with('success', 'Aluno matriculado com sucesso.');
     }
+
+  public function check(Request $request)
+  {
+    $exists = Matricula::where('turma_id', $request->turma_id)
+                        ->where('aluno_id', $request->aluno_id)
+                        ->exists();
+    
+    return response()->json(['exists' => $exists]);
+  }
+
+  public function destroy($id)
+  {
+    $matricula = Matricula::find($id);
+
+    if ($matricula) {
+        $matricula->delete();
+        return response()->json(['message' => 'Matrícula excluída com sucesso.']);
+    } else {
+        return response()->json(['message' => 'Matrícula não encontrada.'], 404);
+    }
+ }
 }
