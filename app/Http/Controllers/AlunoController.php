@@ -8,7 +8,11 @@ namespace App\Http\Controllers;
    {
        public function index()
        {
-           $alunos = Aluno::orderBy('nome')->get(); // Ordena alfabeticamente por nome
+           $alunos = Aluno::orderBy('nome')->paginate(5);
+            if (request()->ajax()) {
+                return response()->json($alunos);
+            }
+
            return view('alunos.index', compact('alunos'));
        }
 
@@ -36,27 +40,19 @@ namespace App\Http\Controllers;
            return view('alunos.edit', compact('aluno'));
        }
 
-       public function update(Request $request, Aluno $aluno)
+       public function update(Request $request, $id)
        {
-           $request->validate([
-               'nome' => 'required|string|max:255',
-               'data_nascimento' => 'required|date',
-               'usuario' => 'required|string|max:255',
-           ]);
-
-           $aluno->update($request->all());
-
-           return redirect()->route('alunos.index')
-                            ->with('success', 'Aluno atualizado com sucesso.');
+            $aluno = Aluno::findOrFail($id);
+            $aluno->update($request->all());
+            return response()->json(['message' => 'Aluno atualizado com sucesso!', 'aluno' => $aluno]);
        }
 
-       public function destroy(Aluno $aluno)
-       {
-           $aluno->delete();
-
-           return redirect()->route('alunos.index')
-                            ->with('success', 'Aluno excluído com sucesso.');
-       }
+        public function destroy($id)
+        {
+            $aluno = Aluno::findOrFail($id);
+            $aluno->delete();
+            return response()->json(['message' => 'Aluno excluído com sucesso!']);
+        }
 
        public function search(Request $request)
        {

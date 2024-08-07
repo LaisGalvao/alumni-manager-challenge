@@ -1,33 +1,44 @@
 <template>
-    <div class="form-container">
-        <form @submit.prevent="submitForm">
-            <div class="form-group">
-                <label for="nome">Nome:</label>
-                <input v-model="aluno.nome" type="text" id="nome" class="form-control" required />
-                <span class="error-message" v-if="errors.nome">{{ errors.nome }}</span>
-            </div>
-            <div class="form-group">
-                <label for="data_nascimento">Data de Nascimento:</label>
-                <input v-model="aluno.data_nascimento" type="date" id="data_nascimento" class="form-control" required />
-                <span class="error-message" v-if="errors.data_nascimento">{{ errors.data_nascimento }}</span>
-            </div>
-            <div class="form-group">
-                <label for="usuario">Usuário:</label>
-                <input v-model="aluno.usuario" type="text" id="usuario" class="form-control" required />
-                <span class="error-message" v-if="errors.usuario">{{ errors.usuario }}</span>
-            </div>
-            <button class="btn-primary" type="submit">Salvar</button>
-        </form>
-    </div>
+    <form @submit.prevent="submitForm">
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input v-model="aluno.nome" type="text" id="nome" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label for="data_nascimento">Data de Nascimento:</label>
+            <input v-model="aluno.data_nascimento" type="date" id="data_nascimento" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label for="usuario">Usuário:</label>
+            <input v-model="aluno.usuario" type="text" id="usuario" class="form-control" required />
+        </div>
+        <button type="submit" class="btn btn-primary">{{ editing ? 'Atualizar' : 'Salvar' }}</button>
+        <button type="button" class="btn btn-secondary" @click="cancelEdit" v-if="editing">Cancelar</button>
+    </form>
 </template>
 
 <script>
 export default {
+    props: {
+        aluno: {
+            type: Object,
+            default: () => ({ nome: '', data_nascimento: '', usuario: '' })
+        }
+    },
     data() {
         return {
-            aluno: { nome: '', data_nascimento: '', usuario: '' },
+            editing: false,
             errors: {}
         };
+    },
+    watch: {
+        aluno: {
+            handler(newVal) {
+                this.editing = !!newVal.id;
+            },
+            deep: true,
+            immediate: true
+        }
     },
     methods: {
         submitForm() {
@@ -42,73 +53,66 @@ export default {
             if (this.aluno.usuario.length < 3) {
                 this.errors.usuario = 'O usuário deve ter pelo menos 3 caracteres.';
             }
-
-            if (Object.keys(this.errors).length === 0) {
-                axios.post('/alunos', this.aluno)
-                    .then(response => {
-                        alert('Aluno salvo com sucesso!');
-                        this.$emit('aluno-saved', response.data);
-                    })
-                    .catch(error => {
-                        console.error(error);
-                        alert('Ocorreu um erro ao salvar o aluno.');
-                    });
+            
+            if (Object.keys(this.errors).length > 0) {
+                return; // Não envia o formulário se houver erros
             }
+
+            const method = this.editing ? 'put' : 'post';
+            const url = this.editing ? `/alunos/${this.aluno.id}` : '/alunos';
+            
+            axios[method](url, this.aluno)
+                .then(response => {
+                    this.$emit('aluno-saved');
+                    this.editing = false;
+                    this.$emit('cancel-edit');
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert('Ocorreu um erro ao salvar o aluno.');
+                });
+        },
+        cancelEdit() {
+            this.$emit('cancel-edit');
         }
     }
 };
 </script>
 
 <style scoped>
-/* Estilos para o formulário */
-.form-container {
-    background-color: #2c2f32;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    color: #e0e0e0;
-}
-
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
 }
-
-label {
-    display: block;
-    margin-bottom: 5px;
-    color: #ed145b;
-}
-
 .form-control {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #333;
-    border-radius: 4px;
-    background-color: #e0e0e0;
-    color: #2c2f32;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
 }
-
-.form-control:focus {
-    border-color: #ed145b;
-    box-shadow: 0 0 0 0.2rem rgba(237, 20, 91, 0.25);
-}
-
-.error-message {
-    color: #ff5b77;
-    font-size: 0.875rem;
-}
-
-.btn-primary {
-    background-color: #ed145b;
-    border: none;
+.btn {
     color: #fff;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #ed145b;
+    border-color: #ed145b;
+}
+.btn:hover {
+    color: #fff;
+    background-color: #d11a51;
+    border-color: #d11a51;
+}
+
+.btn-secondary {
+    background-color: #6c757d; /* Cor de fundo do botão secundário */
+    border: none;
+    color: #fff; /* Texto branco no botão */
     padding: 10px 20px;
     font-size: 1rem;
     border-radius: 4px;
     cursor: pointer;
 }
 
-.btn-primary:hover {
-    background-color: #d11a51;
-}
 </style>
