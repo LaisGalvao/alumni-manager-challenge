@@ -11,21 +11,31 @@ class MatriculaController extends Controller
 {
 
     /**
-     * Exibir a lista de turmas para matrícula.
+     * Exibir a lista de matrículas com informações do aluno e da turma.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        // Busca todas as turmas
-        $turmas = Matricula::all();
+   {
+    // Busca todas as matrículas com as informações do aluno e da turma
+    $matriculas = Matricula::with(['aluno', 'turma'])->get()->map(function ($matricula) {
+        return [
+            'id' => $matricula->id,
+            'aluno_id' => $matricula->aluno_id,
+            'aluno_nome' => $matricula->aluno->nome,
+            'turma_id' => $matricula->turma_id,
+            'turma_nome' => $matricula->turma->nome,
+            'turma_descricao' => $matricula->turma->descricao,
+            'turma_tipo' => $matricula->turma->tipo,
+        ];
+    })->sortBy('aluno_nome'); // Ordena pela coluna 'aluno_nome'
 
-        // Retorna a view com os dados das turmas
-        if (request()->ajax()) {
-                return response()->json($turmas);
-        }
-        return view('matriculas.index', compact('turmas'));
+    // Retorna a view com os dados das matrículas
+    if (request()->ajax()) {
+        return response()->json($matriculas);
     }
+    return view('matriculas.index', compact('matriculas'));
+   }
 
     /**
      * Exibir a lista de alunos matriculados em uma turma específica.

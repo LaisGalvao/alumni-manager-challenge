@@ -2875,7 +2875,7 @@ var render = function render() {
   }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.alunos, function (aluno) {
     return _c("tr", {
       key: aluno.id
-    }, [_c("td", [_vm._v(_vm._s(aluno.aluno_id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(aluno.turma_id))]), _vm._v(" "), _c("td", [_c("button", {
+    }, [_c("td", [_vm._v(_vm._s(aluno.aluno_nome))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(aluno.turma_nome))]), _vm._v(" "), _c("td", [_c("button", {
       staticClass: "btn btn-danger",
       on: {
         click: function click($event) {

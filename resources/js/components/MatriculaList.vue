@@ -11,8 +11,8 @@
             </thead>
             <tbody>
                 <tr v-for="aluno in alunos" :key="aluno.id">
-                    <td>{{ aluno.aluno_id }}</td>
-                    <td>{{ aluno.turma_id }}</td>
+                    <td>{{ aluno.aluno_nome }}</td>
+                    <td>{{ aluno.turma_nome }}</td>
                     <td>
                         <button @click="removeMatricula(aluno.id)" class="btn btn-danger">Remover</button>
                     </td>
