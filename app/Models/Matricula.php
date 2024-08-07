@@ -6,7 +6,7 @@ namespace App\Models;
 
    class Matricula extends Model
    {
-    use HasFactory;
+    
        protected $fillable = ['aluno_id', 'turma_id'];
 
        public function aluno()

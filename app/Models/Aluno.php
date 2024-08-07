@@ -6,7 +6,7 @@ namespace App\Models;
 
    class Aluno extends Model
    {
-       use HasFactory;
+       
        protected $fillable = ['nome', 'data_nascimento', 'usuario'];
 
        public function turmas()

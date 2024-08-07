@@ -6,7 +6,7 @@ namespace App\Models;
 
    class Turma extends Model
    {
-       use HasFactory;
+       
        protected $fillable = ['nome', 'descricao', 'tipo'];
 
        public function alunos()
