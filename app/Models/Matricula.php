@@ -2,9 +2,11 @@
 namespace App\Models;
 
    use Illuminate\Database\Eloquent\Model;
+   use Illuminate\Database\Eloquent\Factories\HasFactory;
 
    class Matricula extends Model
    {
+    use HasFactory;
        protected $fillable = ['aluno_id', 'turma_id'];
 
        public function aluno()
