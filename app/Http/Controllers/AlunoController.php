@@ -42,6 +42,11 @@ namespace App\Http\Controllers;
 
        public function update(Request $request, $id)
        {
+            $request->validate([
+                'nome' => 'required|string|min:3|max:255',
+                'data_nascimento' => 'required|date',
+                'usuario' => 'required|string|min:3|max:255',
+            ]);
             $aluno = Aluno::findOrFail($id);
             $aluno->update($request->all());
             return response()->json(['message' => 'Aluno atualizado com sucesso!', 'aluno' => $aluno]);

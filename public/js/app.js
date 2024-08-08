@@ -1956,6 +1956,7 @@ __webpack_require__.r(__webpack_exports__);
       var method = this.editing ? 'put' : 'post';
       var url = this.editing ? "/alunos/".concat(this.aluno.id) : '/alunos';
       axios[method](url, this.aluno).then(function (response) {
+        alert("Aluno ".concat(_this.editing ? 'editado' : 'cadastrado', " com sucesso!"));
         _this.$emit('aluno-saved');
         _this.editing = false;
         _this.$emit('cancel-edit');
@@ -2148,21 +2149,6 @@ __webpack_require__.r(__webpack_exports__);
         console.error(error);
         alert('Ocorreu um erro ao verificar a matrícula.');
       });
-
-      /*  axios.post(`/matriculas`, {
-           turma_id: this.selectedTurma,
-           aluno_id: this.selectedAluno
-       })
-       .then(response => {
-           alert('Matrícula efetuada com sucesso!');
-           this.selectedTurma = null;
-           this.selectedAluno = null;
-           this.$emit('matricula-updated'); // Emite evento quando uma matrícula é feita
-       })
-       .catch(error => {
-           console.error(error);
-           alert('Ocorreu um erro ao matricular o aluno.');
-       }); */
     },
     matricularAluno: function matricularAluno() {
       var _this4 = this;
@@ -2335,9 +2321,10 @@ __webpack_require__.r(__webpack_exports__);
       var method = this.editing ? 'put' : 'post';
       var url = this.editing ? "/turmas/".concat(this.turma.id) : '/turmas';
       axios[method](url, this.turma).then(function (response) {
+        alert("Turma ".concat(_this.editing ? 'editada' : 'cadastrada', " com sucesso!"));
         _this.$emit('turma-saved');
         _this.editing = false;
-        _this.$emit('cancel-edit'); // Emite o evento de cancelamento de edição após salvar
+        _this.$emit('cancel-edit');
       })["catch"](function (error) {
         console.error(error);
         alert('Ocorreu um erro ao salvar a turma.');
@@ -2520,7 +2507,9 @@ var render = function render() {
         _vm.$set(_vm.aluno, "nome", $event.target.value);
       }
     }
-  })]), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _vm.errors.nome ? _c("div", {
+    staticClass: "text-danger"
+  }, [_vm._v(_vm._s(_vm.errors.nome))]) : _vm._e()]), _vm._v(" "), _c("div", {
     staticClass: "form-group"
   }, [_c("label", {
     attrs: {
@@ -2548,7 +2537,9 @@ var render = function render() {
         _vm.$set(_vm.aluno, "data_nascimento", $event.target.value);
       }
     }
-  })]), _vm._v(" "), _c("div", {
+  }), _vm._v(" "), _vm.errors.data_nascimento ? _c("div", {
+    staticClass: "text-danger"
+  }, [_vm._v(_vm._s(_vm.errors.data_nascimento))]) : _vm._e()]), _vm._v(" "), _c("div", {
     staticClass: "form-group"
   }, [_c("label", {
     attrs: {
@@ -2576,7 +2567,9 @@ var render = function render() {
         _vm.$set(_vm.aluno, "usuario", $event.target.value);
       }
     }
-  })]), _vm._v(" "), _c("button", {
+  }), _vm._v(" "), _vm.errors.nome ? _c("div", {
+    staticClass: "text-danger"
+  }, [_vm._v(_vm._s(_vm.errors.usuario))]) : _vm._e()]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-primary",
     attrs: {
       type: "submit"

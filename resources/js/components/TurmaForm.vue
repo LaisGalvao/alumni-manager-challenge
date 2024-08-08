@@ -95,9 +95,10 @@ export default {
             
             axios[method](url, this.turma)
                 .then(response => {
+                    alert(`Turma ${this.editing ? 'editada' : 'cadastrada' } com sucesso!`);
                     this.$emit('turma-saved');
                     this.editing = false;
-                    this.$emit('cancel-edit'); // Emite o evento de cancelamento de edição após salvar
+                    this.$emit('cancel-edit');
                 })
                 .catch(error => {
                     console.error(error);

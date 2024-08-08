@@ -3,14 +3,17 @@
         <div class="form-group">
             <label for="nome">Nome:</label>
             <input v-model="aluno.nome" type="text" id="nome" class="form-control" required />
+            <div v-if="errors.nome" class="text-danger">{{ errors.nome }}</div>
         </div>
         <div class="form-group">
             <label for="data_nascimento">Data de Nascimento:</label>
             <input v-model="aluno.data_nascimento" type="date" id="data_nascimento" class="form-control" required />
+            <div v-if="errors.data_nascimento" class="text-danger">{{ errors.data_nascimento }}</div>
         </div>
         <div class="form-group">
             <label for="usuario">Usuário:</label>
             <input v-model="aluno.usuario" type="text" id="usuario" class="form-control" required />
+            <div v-if="errors.usuario" class="text-danger">{{ errors.usuario }}</div>
         </div>
         <button type="submit" class="btn btn-primary">{{ editing ? 'Atualizar' : 'Salvar' }}</button>
         <button type="button" class="btn btn-secondary" @click="cancelEdit" v-if="editing">Cancelar</button>
@@ -63,6 +66,7 @@ export default {
             
             axios[method](url, this.aluno)
                 .then(response => {
+                    alert(`Aluno ${this.editing ? 'editado' : 'cadastrado' } com sucesso!`);
                     this.$emit('aluno-saved');
                     this.editing = false;
                     this.$emit('cancel-edit');

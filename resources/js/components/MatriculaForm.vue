@@ -83,21 +83,6 @@ export default {
                     console.error(error);
                     alert('Ocorreu um erro ao verificar a matrícula.');
                 });
-
-           /*  axios.post(`/matriculas`, {
-                turma_id: this.selectedTurma,
-                aluno_id: this.selectedAluno
-            })
-            .then(response => {
-                alert('Matrícula efetuada com sucesso!');
-                this.selectedTurma = null;
-                this.selectedAluno = null;
-                this.$emit('matricula-updated'); // Emite evento quando uma matrícula é feita
-            })
-            .catch(error => {
-                console.error(error);
-                alert('Ocorreu um erro ao matricular o aluno.');
-            }); */
         },
         matricularAluno() {
             axios.post(`/matriculas`, {

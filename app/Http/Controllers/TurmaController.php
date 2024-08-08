@@ -57,6 +57,12 @@ class TurmaController extends Controller
 
     public function update(Request $request, $id)
        {
+            // Validação dos dados recebidos
+            $request->validate([
+                'nome' => 'required|string|min:3|max:255',
+                'descricao' => 'nullable|string|max:1000',
+                'tipo' => 'required|string|min:3|max:255',
+            ]);
             $turma = Turma::findOrFail($id);
             $turma->update($request->all());
             return response()->json(['message' => 'Turma atualizada com sucesso!', 'turma' => $turma]);

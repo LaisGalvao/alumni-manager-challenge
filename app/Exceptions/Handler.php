@@ -50,6 +50,25 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        if ($exception instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
+            return redirect('/'); // Redireciona para a página inicial para 404
+        }
+
+        if ($exception instanceof \Symfony\Component\HttpKernel\Exception\HttpException) {
+            if ($exception->getStatusCode() == 401) {
+                return redirect('/'); // Redireciona para a página inicial para 401
+            }
+
+            if ($exception->getStatusCode() == 405) {
+                return redirect('/'); // Redireciona para a página inicial para 405
+            }
+            
+            if ($exception instanceof \Symfony\Component\HttpKernel\Exception\HttpException) {
+            if ($exception->getStatusCode() == 500) {
+                return response()->view('errors.500', [], 500);
+            }
+        }
+        }
         return parent::render($request, $exception);
     }
 }
