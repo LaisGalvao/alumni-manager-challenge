@@ -7,10 +7,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Alumni Manager Challenge') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/sidebar.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -21,15 +22,23 @@
     <link href="{{ asset('css/dark-theme.css') }}" rel="stylesheet">
 
     <style>
-        /* Estilos para o menu lateral */
+        body {
+            margin: 0;
+            font-family: 'Nunito', sans-serif;
+            display: flex;
+        }
         .sidebar {
             height: 100vh;
             width: 250px;
             position: fixed;
             top: 0;
             left: 0;
-           /*  background-color: #f8f9fa; */
+            background-color: #202427;
             padding-top: 20px;
+            transition: transform 0.3s ease;
+        }
+        .sidebar.closed {
+            transform: translateX(-100%);
         }
         .sidebar a {
             padding: 10px 15px;
@@ -44,107 +53,45 @@
         .content {
             margin-left: 250px;
             padding: 20px;
+            flex-grow: 1;
         }
-        .main-content {
-            padding: 20px;
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: #202427;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
         }
-       /* resources/css/dark-theme.css */
-
-/* Fundo principal */
-body {
-    background-color: #202427; /* Fundo escuro */
-    color: #e0e0e0; /* Texto claro */
-    font-family: 'Nunito', sans-serif;
-}
-
-/* Cabeçalho */
-.navbar {
-    background-color: #202427; /* Fundo escuro no cabeçalho */
-    color: #e0e0e0; /* Texto claro no cabeçalho */
-}
-
-/* Links */
-a {
-    color: #ed145b; /* Cor dos links */
-}
-
-a:hover {
-    color: #ff5b77; /* Cor dos links ao passar o mouse */
-}
-
-/* Botões */
-.btn-primary {
-    background-color: #ed145b; /* Cor de fundo dos botões primários */
-    border-color: #ed145b; /* Cor da borda dos botões primários */
-    color: #fff; /* Texto branco nos botões primários */
-}
-
-.btn-primary:hover {
-    background-color: #d11a51; /* Cor de fundo dos botões primários ao passar o mouse */
-    border-color: #d11a51; /* Cor da borda dos botões primários ao passar o mouse */
-}
-
-/* Botões Secundários */
-.btn-secondary {
-    background-color: #333; /* Cor de fundo dos botões secundários */
-    border-color: #444; /* Cor da borda dos botões secundários */
-    color: #e0e0e0; /* Texto claro nos botões secundários */
-}
-
-.btn-secondary:hover {
-    background-color: #444; /* Cor de fundo dos botões secundários ao passar o mouse */
-    border-color: #555; /* Cor da borda dos botões secundários ao passar o mouse */
-}
-
-/* Cards e Painéis */
-.card, .panel {
-    background-color: #2c2f32; /* Fundo dos cards e painéis */
-    color: #e0e0e0; /* Texto claro dentro dos cards e painéis */
-    border: 1px solid #333; /* Borda dos cards e painéis */
-}
-
-.card-header {
-    background-color: #202427; /* Fundo do cabeçalho dos cards */
-    color: #e0e0e0; /* Texto claro no cabeçalho dos cards */
-}
-
-/* Tabelas */
-.table {
-    background-color: #2c2f32; /* Fundo da tabela */
-    color: #e0e0e0; /* Texto claro na tabela */
-}
-
-.table thead {
-    background-color: #202427; /* Fundo da cabeça da tabela */
-}
-
-.table tbody tr:hover {
-    background-color: #333; /* Fundo da linha ao passar o mouse */
-}
-
-/* Rodapé */
-footer {
-    background-color: #202427; /* Fundo do rodapé */
-    color: #e0e0e0; /* Texto claro no rodapé */
-}
-
-/* Formularios */
-.form-control {
-    background-color: #2c2f32; /* Fundo dos campos de formulário */
-    color: #e0e0e0; /* Texto claro nos campos de formulário */
-    border: 1px solid #333; /* Borda dos campos de formulário */
-}
-
-.form-control:focus {
-    border-color: #ed145b; /* Cor da borda ao focar no campo de formulário */
-    box-shadow: 0 0 0 0.2rem rgba(237, 20, 91, 0.25); /* Sombra ao focar no campo de formulário */
-}
+        @media (max-width: 920px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+                z-index: 999;
+                transform: translateX(-100%);
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .content {
+                margin-left: 0;
+            }
+            .menu-toggle {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
     <div id="app">
         @auth
             @if(Auth::user()->role === 'admin')
+                <button class="menu-toggle" id="menu-toggle">☰ Menu</button>
                 <div class="sidebar">
                     <a href="{{ route('dashboard') }}">Dashboard</a>
                     <a href="{{ route('alunos.index') }}">Gerenciar Alunos</a>
